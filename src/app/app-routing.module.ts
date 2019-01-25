@@ -3,9 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './views/home/home.component';
 import {ListComponent} from './views/results/list/list.component';
 import {MapComponent} from './views/results/map/map.component';
+import {WelcomeComponent} from './views/welcome/welcome.component';
 
 const routes: Routes = [
-    {path: '', redirectTo: 'home', pathMatch: 'full' },
+    {path: '', redirectTo: 'welcome', pathMatch: 'full' },
+    {path: 'welcome', component: WelcomeComponent},
     {path: 'home', component: HomeComponent},
     {path: 'list', component: ListComponent},
     {path: 'map', component: MapComponent}

@@ -9,6 +9,7 @@ import { NavigationComponent } from './globals/navigation/navigation.component';
 import { HomeComponent } from './views/home/home.component';
 import { ListComponent } from './views/results/list/list.component';
 import { MapComponent } from './views/results/map/map.component';
+import { WelcomeComponent } from './views/welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MapComponent } from './views/results/map/map.component';
     NavigationComponent,
     HomeComponent,
     ListComponent,
-    MapComponent
+    MapComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
