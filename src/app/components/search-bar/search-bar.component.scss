@@ -1,0 +1,40 @@
+.search {
+    .search-bar {
+        position: relative;
+
+        ::ng-deep {
+            .mat-form-field-appearance-legacy {
+                .mat-form-field-underline {
+                    background-color: transparent;
+                }
+            }
+
+            .mat-form-field {
+                &.mat-focused {
+                    .mat-form-field-ripple {
+                        background-color: transparent;
+                    }
+                }
+            }
+        }
+
+        .search-input {
+            width: 100%;
+            input[type=text] {
+                height: 50px;
+                border: none;
+                border-bottom: 11px solid #007bff;
+                font-size: 25px;
+
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            .search-btn {
+                position: absolute;
+                right: 0;
+            }
+        }
+    }
+}

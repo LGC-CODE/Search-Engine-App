@@ -2,6 +2,7 @@
 $ionicons-font-path: '~ionicons/dist/fonts';
 @import '~ionicons/dist/scss/ionicons.scss';
 @import 'bootstrap/scss/bootstrap.scss';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 body {
     margin: 0px;

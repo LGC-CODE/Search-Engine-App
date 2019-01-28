@@ -1,0 +1,16 @@
+<div class="title">
+    <h1>
+        <i class="icon ion-md-mail"></i>
+        Notifications/Alerts
+    </h1>
+</div>
+<div class="list-group align-self-start">
+    <div class="list-group-item list-group-item-action" [ngClass]="{'active': idx === 0}" *ngFor="let item of [1,2,3,4,5]; let idx = index" >
+        <div class="d-flex justify-content-between">
+            <h5 class="mb-1">HCP Renewal Alert</h5>
+            <small>3 days ago</small>
+        </div>
+        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <small>John Stewart</small>
+    </div>
+</div>

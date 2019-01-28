@@ -1,58 +1,39 @@
 :host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     p {
         margin: 0;
     }
 
     .home-wrapper {
-        padding: 5%;
-        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        .search {
-            .search-bar {
-                position: relative;
+        .inner-content {
+            padding: 5%;
+            width: 100%;
 
-                input[type=text] {
-                    width: 100%;
-                    border: none;
-                    border-bottom: 11px solid #007bff;
-                    font-size: 25px;
-
-                    &:focus {
-                        outline: none;
+            .modal-top {
+                .modal-left {
+                    .card {
+                        .icon {
+                            font-size: 9vw;
+                            text-align: center;
+                        }
                     }
                 }
 
-                .search-btn {
-                    position: absolute;
-                    right: 0;
-                }
-            }
-        }
-
-        .modal-top {
-            .modal-left {
-                .card {
-                    .icon {
-                        font-size: 9vw;
-                        text-align: center;
+                .modal-right {
+                    .card {
+                        height: 100%;
                     }
                 }
             }
 
-            .modal-right {
-                .card {
-                    height: 100%;
-                }
+            .modal-full {
+                display: flex;
+                justify-content: center;
             }
-        }
-
-        .modal-full {
-            display: flex;
-            justify-content: center;
         }
     }
 }

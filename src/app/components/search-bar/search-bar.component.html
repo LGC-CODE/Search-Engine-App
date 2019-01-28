@@ -1,0 +1,42 @@
+<div class="search pb-5">
+    <div class="search-bar">
+        <form class="example-form" [formGroup]='usersForm'>
+            <mat-form-field class="search-input">
+                <input placeholder="Find HCP's..." type="text" 
+                       matInput [matAutocomplete]="auto" formControlName='userInput'>
+                <div class="search-btn btn btn-primary btn-lg" [routerLink]="[ '/list']">
+                    <i class="icon ion-md-search"></i>
+                </div>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+                    <mat-option *ngIf="isLoading" class="is-loading">
+                        <mat-spinner diameter="50"></mat-spinner>
+                    </mat-option>
+                    <ng-container *ngIf="!isLoading">
+                        <mat-table [dataSource]="filteredUsers" class="company-mat-table">
+                            <ng-container matColumnDef="name">
+                                <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+                                <mat-cell *matCellDef="let opt">
+                                    {{opt.name}}
+                                </mat-cell>
+                            </ng-container>
+
+                            <ng-container matColumnDef="address">
+                                <mat-header-cell *matHeaderCellDef>address</mat-header-cell>
+                                <mat-cell *matCellDef="let opt">
+                                    {{opt.address}}
+                                </mat-cell>
+                            </ng-container>
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-option *matRowDef="let opt; columns: displayedColumns" [value]="opt">
+                                <mat-row></mat-row>
+                            </mat-option>
+                        </mat-table>
+                    </ng-container>
+                </mat-autocomplete>
+            </mat-form-field>
+        </form>
+    </div>
+    <div class="search-tags">
+        By: HCP Name, HCP ID#, HCP Specialty, Location
+    </div>
+</div>
