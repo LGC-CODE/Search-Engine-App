@@ -17,6 +17,8 @@ import {BrowserAnimationsModule, NoopAnimationsModule} from '@angular/platform-b
 import { MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule,
          MatAutocompleteModule, MatProgressSpinnerModule, MatTableModule} from '@angular/material';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { ResultsComponent } from './views/results/results.component';
+import { CardsComponent } from './views/results/cards/cards.component';
 
 @NgModule({
     declarations: [
@@ -28,7 +30,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
         WelcomeComponent,
         RequestCardComponent,
         MessagesCardComponent,
-        SearchBarComponent
+        SearchBarComponent,
+        ResultsComponent,
+        CardsComponent
     ],
     imports: [
         BrowserModule,
