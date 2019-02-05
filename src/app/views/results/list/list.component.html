@@ -1,65 +1,118 @@
-<app-navigation></app-navigation>
 <div class="list-wrapper bg-secondary text-white px-3">
     <div class="list-filters row d-flex justify-content-between">
-        <div class="left-content col-md-12 col-lg-6 d-flex justify-content-start">
+        <!--<div class="left-content col-md-12 col-lg-6 d-flex justify-content-start">
             <div class="filters-shortcuts d-flex flex-row">
                 <div class="p-2 flex-fill align-self-center"><u>All</u></div>
                 <div class="p-2 flex-fill align-self-center"><u>Clear All</u></div>
             </div>
             <div class="filters-activated d-flex flex-row">
-                <div class="filter-type p-2 d-flex justify-content-center">
+                <div class="filter-type p-2 d-flex justify-content-center flex-column">
                     <div class="close-btn align-self-center">
                         <i class="icon ion-md-close-circle-outline"></i>
                     </div>
-                    <div class="filter p-2 text-center align-self-center">
+                    <div class="filter p-2 text-centx-2 pb-2 align-self-center">
                         Last Name:<br>Smith
                     </div>
                 </div>
-                <div class="filter-type p-2 d-flex justify-content-center">
+                <div class="filter-type p-2 d-flex justify-content-center flex-column">
                     <div class="close-btn align-self-center">
                         <i class="icon ion-md-close-circle-outline"></i>
                     </div>
-                    <div class="filter p-2 text-center align-self-center">
+                    <div class="filter p-2 text-centx-2 pb-2 align-self-center">
                         Active
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="right-content col-md-12 col-lg-6 d-flex justify-content-end">
-            <div class="filter-actions d-flex flex-row">
-                <div class="action p-2 d-flex justify-content-center">
-                    <div class="icon align-self-center">
-                        <i class="icon ion-md-options"></i>
+        </div>-->
+        <div class="right-content col-md-12 col-lg-12">
+            <div class="d-flex justify-content-end flex-row">
+                <div class="filter-actions d-flex flex-row">
+                    <div class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon ion-md-funnel"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            Filter/Sort
+                        </div>
                     </div>
-                    <div class="option p-2 align-self-center flex-fill">
-                        More filters
+                    <div class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon ion-md-menu"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            View
+                        </div>
+                    </div>
+                    <div class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon ion-md-download"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            Download
+                        </div>
+                    </div>
+                    <div class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon ion-ios-share"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            Send
+                        </div>
+                    </div>
+                    <div class="action p-2 d-flex align-self-center">
+                        <div class="btn btn-primary btn-sm col-md-12">Map View <i class="ion-md-arrow-dropright"></i></div>
                     </div>
                 </div>
-                <div class="action p-2 d-flex justify-content-center">
-                    <div class="icon align-self-center">
-                        <i class="icon ion-md-menu"></i>
-                    </div>
-                    <div class="option p-2 text-center align-self-center">
-                        View
-                    </div>
-                </div>
-                <div class="action p-2 d-flex justify-content-center">
-                    <div class="icon align-self-center">
-                        <i class="icon ion-ios-share"></i>
-                    </div>
-                    <div class="option p-2 text-center align-self-center">
-                        Send
-                    </div>
-                </div>
-            </div>
-            <div class="filter-buttons d-flex flex-row col-md-7">
-                <div class="buttons p-2 flex-fill align-self-center">
+                <!-- <div class="filter-buttons d-flex flex-row"> -->
+                <!-- <div class="buttons p-2 flex-fill align-self-center">
                     <div class="btn btn-primary btn-sm col-md-12">Smart Share</div>
-                </div>
-                <div class="buttons p-2 flex-fill align-self-center">
-                    <div class="btn btn-primary btn-sm col-md-12">Map View <i class="ion-md-arrow-dropright"></i></div>
-                </div>
+                </div> -->
+                <!-- </div> -->
             </div>
         </div>
     </div>
 </div>
+<table class="table">
+    <thead class="bg-primary text-light">
+        <tr>
+            <th scope="col">
+                <div class="form-check">
+					<label>
+						<input type="checkbox" name="check" checked>
+					</label>
+				</div>
+            </th>
+            <th scope="col">Prof ID#</th>
+            <th scope="col">NPI#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Middle Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">ZIP</th>
+            <th scope="col">CRM</th>
+            <th scope="col">Spend</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let professional of searchResults">
+            <th scope="row">
+                <div class="form-check">
+					<label>
+						<input type="checkbox" name="check" checked>
+					</label>
+				</div>
+            </th>
+            <td>{{ professional.profId }}</td>
+            <td>{{ professional.npi }}</td>
+            <td>{{ professional.name.split(' ')[0] }}</td>
+            <td>{{ 'n/a' }}</td>
+            <td>{{ professional.name.split(' ')[1] }}</td>
+            <td>{{ professional.address.split(', ')[0] }}</td>
+            <td>{{ professional.address.split(', ')[1] }}</td>
+            <td>{{ professional.address.split(', ')[3] }}</td>
+            <td>{{ professional.crm }}</td>
+            <td>{{ professional.spend }}</td>
+        </tr>
+    </tbody>
+</table>

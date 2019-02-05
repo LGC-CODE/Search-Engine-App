@@ -22,11 +22,14 @@ export class BackendApiService {
                         const lowerCaseSearch: string = filter.toLowerCase();
 
                         const searchQuery = _.filter(response, (object) => {
-                            const pickedProps = _.pick(object, 'name', 'address');
+                            const pickedProps = _.pick(object, 'name', 'address', 'profId');
+                            // console.log(pickedProps);
                             const foundProps = _.find(pickedProps, e => {
-                                // console.log(e.toLowerCase(), lowerCaseSearch);
-                                const regexpSearch = new RegExp(`${lowerCaseSearch}`, 'gi');
-                                return regexpSearch.test(e.toLowerCase());
+                                // console.log(lowerCaseSearch.split(' '));
+                                const query = lowerCaseSearch.split(' ').join('|').toString();
+                                // console.log(query);
+                                const regexpSearch = new RegExp(`${query}`, 'gi');
+                                return regexpSearch.test(e.toString().toLowerCase());
                             });
                             // console.log(pickedProps, foundProps);
                             return foundProps;

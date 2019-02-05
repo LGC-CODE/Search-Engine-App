@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup} from '@angular/forms';
 import {switchMap, debounceTime, tap, finalize, startWith, map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {BackendApiService} from '../../services/backend-api.service';
+import {Router, ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -16,8 +17,11 @@ export class SearchBarComponent implements OnInit {
     usersForm: FormGroup;
     isLoading = false;
     displayedColumns = ['name', 'address'];
+    private searchQuery;
 
-    constructor(private fb: FormBuilder, private backendApi: BackendApiService) {}
+    constructor(
+        private fb: FormBuilder, private backendApi: BackendApiService, public routers: Router,
+        private route: ActivatedRoute) {}
 
     ngOnInit() {
         this.usersForm = this.fb.group({
@@ -31,10 +35,11 @@ export class SearchBarComponent implements OnInit {
                 debounceTime(300),
                 tap(() => this.isLoading = true),
                 switchMap(value => {
-                    return this.backendApi.search(typeof value === 'string' ? value : value.name, 1)
-                    .pipe(
-                        finalize(() => this.isLoading = false),
-                    );
+                    this.searchQuery = typeof value === 'string' ? value : value.name;
+                    return this.backendApi.search(this.searchQuery, 1)
+                        .pipe(
+                            finalize(() => this.isLoading = false),
+                        );
                 }
                 )
             )
@@ -42,12 +47,11 @@ export class SearchBarComponent implements OnInit {
     }
 
     displayFn(user) {
-        console.log(user);
         if (user) { return user.name; }
     }
 
-    select($e) {
-        console.log($e);
+    optionSelect($e) {
+        const selected = $e.option.value;
+        this.routers.navigate(['results/list'], {queryParams: {query: this.searchQuery ? this.searchQuery : ''}});
     }
-
 }

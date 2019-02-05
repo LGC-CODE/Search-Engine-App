@@ -10,15 +10,15 @@ import {environment} from '../environments/environment';
 export class AppComponent {
 
     constructor(private httpClient: HttpClient) {
-        this.httpClient.get(environment.apiEndpoint + '/getName').toPromise().then(
-            resp => {
-                console.log(resp);
-            }
-        ).catch(
-            err => {
-                console.dir(err);
-            }
-        );
+        // this.httpClient.get(environment.apiEndpoint + '/getName').toPromise().then(
+        //     resp => {
+        //         console.log(resp);
+        //     }
+        // ).catch(
+        //     err => {
+        //         console.dir(err);
+        //     }
+        // );
     }
     title = 'app';
 }

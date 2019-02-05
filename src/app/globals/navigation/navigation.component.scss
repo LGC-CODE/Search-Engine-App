@@ -9,17 +9,17 @@
     }
 
     .navbar-wrap {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+        // display: flex;
+        // flex-direction: row;
+        // justify-content: space-between;
         padding: 0.4% 3.5%;
         background: $primary-blue;
 
         .left-content {
             .user {
-                display: flex;
-                align-items: center;
-                flex-direction: column;
+                // display: flex;
+                // align-items: center;
+                // flex-direction: column;
                  
                 p {
                     font-size: 12px;
@@ -30,17 +30,18 @@
             }
         }
 
-        .right-content {
-            display: flex;
-            align-items: center;
+        .right-content, .center-content {
+            // display: flex;
+            // align-items: center;
 
             .icons {
-                font-size: 30px;
-                display: flex;
-                justify-content: space-between;
+                // display: flex;
+                // justify-content: space-between;
 
                 i {
+                    font-size: 30px;
                     margin: 0 8px;
+                    text-align: center;
                 }
             }
         }

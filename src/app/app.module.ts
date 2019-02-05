@@ -19,6 +19,7 @@ import { MatButtonModule, MatCheckboxModule, MatInputModule, MatFormFieldModule,
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ResultsComponent } from './views/results/results.component';
 import { CardsComponent } from './views/results/cards/cards.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     declarations: [
