@@ -10,7 +10,8 @@
     "e2e": "ng e2e",
     "the-server": "open http://localhost:3030 && cd ./server && npm run start",
     "the-client": "ng serve --open --host 0.0.0.0",
-    "the-setup": "npm i && cd ./server && npm i"
+    "the-setup": "npm i && cd ./server && npm i",
+    "deploy": "ng build --prod && git add . && git commit -m 'new release' && npm version minor && git push heroku master"
   },
   "private": true,
   "dependencies": {
