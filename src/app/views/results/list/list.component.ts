@@ -15,18 +15,6 @@ export class ListComponent implements OnInit {
     constructor(private route: ActivatedRoute, private backendApi: BackendApiService) {}
 
     ngOnInit() {
-        // this.route.queryParams
-        //     .subscribe(
-        //         params => {
-        //             console.log(params);
-        //             this.backendApi.search(params.address.split(', ')[1], 1).subscribe(
-        //                 results => {
-        //                     this.searchResults = results;
-        //                     console.log(this.searchResults);
-        //                 }
-        //             );
-        //         }
-        //     );
         const valsChange = this.route.queryParams
             .pipe(
                 debounceTime(300),

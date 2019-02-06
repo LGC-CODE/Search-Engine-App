@@ -1,3 +1,42 @@
-<p>
-  cards works!
-</p>
+<div class="d-flex flex-wrap p-5 justify-content-center">
+    <div class="blog-card spring-fever m-1" *ngFor="let results of searchResults">
+        <div class="title-content">
+            <div class="form-check">
+                <label>
+                    <input type="checkbox" name="check" [attr.checked]="false">
+                </label>
+            </div>
+            <div class="left">
+                <div class="profId">{{ results.profId }}</div>
+                <div class="name">{{ results.name }}</div>
+                <div class="degree">{{ results.degree }}</div>
+            </div>
+            <div class="right">
+                <div class="active">{{ results.active }}</div>
+                <div class="crm">CRM <i class="icon ion-md-checkmark-circle" [style.color]="results.crm ? 'lightgreen': 'red'"></i></div>
+                <div class="spend">SPEND <i class="icon ion-md-checkmark-circle" [style.color]="results.spend ? 'lightgreen': 'red'"></i></div>
+            </div>
+            <div class="bottom">
+                <div class="address street">{{ results.address.split(', ')[0] }}</div>
+                <div class="sub-bottom d-flex flex-row justify-content-between">
+                    <div class="address city">{{ results.address.split(', ')[1] }}</div>
+                    <div class="address state">{{ results.address.split(', ')[2] }}</div>
+                    <div class="address state">{{ results.address.split(', ')[3] }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="card-info">
+            <a href="#">View more</a>
+        </div>
+        <!-- <div class="utility-info">
+            <ul class="utility-list">
+                <li><span class="licon icon-like"></span><a href="#">2</a></li>
+                <li><span class="licon icon-com"></span><a href="#">12</a></li>
+                <li><span class="licon icon-dat"></span>03 jun 2017</li>
+                <li><span class="licon icon-tag"></span><a href="#">Photos</a>, <a href="#">Nice</a></li>
+            </ul>
+        </div> -->
+        <div class="gradient-overlay"></div>
+        <div class="color-overlay"></div>
+    </div><!-- /.blog-card -->
+</div>
