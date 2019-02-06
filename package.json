@@ -11,7 +11,7 @@
     "the-server": "open http://localhost:3030 && cd ./server && npm run start",
     "the-client": "ng serve --open --host 0.0.0.0",
     "the-setup": "npm i && cd ./server && npm i",
-    "deploy": "ng build --prod && npm version minor && git push heroku master"
+    "deploy": "ng build --prod && git push heroku master"
   },
   "private": true,
   "dependencies": {
