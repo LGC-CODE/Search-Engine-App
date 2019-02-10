@@ -1,33 +1,9 @@
 <div class="list-wrapper bg-secondary text-white px-3">
     <div class="list-filters row d-flex justify-content-between">
-        <!--<div class="left-content col-md-12 col-lg-6 d-flex justify-content-start">
-            <div class="filters-shortcuts d-flex flex-row">
-                <div class="p-2 flex-fill align-self-center"><u>All</u></div>
-                <div class="p-2 flex-fill align-self-center"><u>Clear All</u></div>
-            </div>
-            <div class="filters-activated d-flex flex-row">
-                <div class="filter-type p-2 d-flex justify-content-center flex-column">
-                    <div class="close-btn align-self-center">
-                        <i class="icon ion-md-close-circle-outline"></i>
-                    </div>
-                    <div class="filter p-2 text-centx-2 pb-2 align-self-center">
-                        Last Name:<br>Smith
-                    </div>
-                </div>
-                <div class="filter-type p-2 d-flex justify-content-center flex-column">
-                    <div class="close-btn align-self-center">
-                        <i class="icon ion-md-close-circle-outline"></i>
-                    </div>
-                    <div class="filter p-2 text-centx-2 pb-2 align-self-center">
-                        Active
-                    </div>
-                </div>
-            </div>
-        </div>-->
         <div class="right-content col-md-12 col-lg-12">
             <div class="d-flex justify-content-end flex-row">
                 <div class="filter-actions d-flex flex-row">
-                    <div class="action p-2 d-flex justify-content-center flex-column">
+                    <div (click)="openFilters()" class="action p-2 d-flex justify-content-center flex-column">
                         <div class="icon align-self-center">
                             <i class="icon ion-md-funnel"></i>
                         </div>

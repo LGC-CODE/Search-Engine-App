@@ -20,6 +20,9 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ResultsComponent } from './views/results/results.component';
 import { CardsComponent } from './views/results/cards/cards.component';
 import {RouterModule} from '@angular/router';
+import { LoginComponent } from './views/auth/login/login.component';
+import { AuthComponent } from './views/auth/auth.component';
+import { FiltersComponent } from './components/filters/filters.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +36,10 @@ import {RouterModule} from '@angular/router';
         MessagesCardComponent,
         SearchBarComponent,
         ResultsComponent,
-        CardsComponent
+        CardsComponent,
+        LoginComponent,
+        AuthComponent,
+        FiltersComponent
     ],
     imports: [
         BrowserModule,
