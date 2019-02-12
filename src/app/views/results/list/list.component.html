@@ -3,7 +3,8 @@
         <div class="right-content col-md-12 col-lg-12">
             <div class="d-flex justify-content-end flex-row">
                 <div class="filter-actions d-flex flex-row">
-                    <div (click)="openFilters()" class="action p-2 d-flex justify-content-center flex-column">
+                    <app-filters *ngIf="openFilter"></app-filters>
+                    <div (click)="openFilter =! openFilter" class="action p-2 d-flex justify-content-center flex-column">
                         <div class="icon align-self-center">
                             <i class="icon ion-md-funnel"></i>
                         </div>

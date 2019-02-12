@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {OktaAuthService} from '@okta/okta-angular';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(public oktaAuth: OktaAuthService) { }
 
   ngOnInit() {
+      this.oktaAuth.getUser().then(
+          resp => {
+              console.log(resp);
+          }
+      );
   }
 
 }

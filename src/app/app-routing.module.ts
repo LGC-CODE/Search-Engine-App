@@ -8,13 +8,18 @@ import {ResultsComponent} from './views/results/results.component';
 import {CardsComponent} from './views/results/cards/cards.component';
 import {LoginComponent} from './views/auth/login/login.component';
 import {AuthComponent} from './views/auth/auth.component';
+import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
+
+export function onAuthRequired({oktaAuth, router}) {
+    router.navigate(['/login']);
+}
 
 const routes: Routes = [
     {path: '', redirectTo: 'welcome', pathMatch: 'full'},
     {path: 'welcome', component: WelcomeComponent},
-    {path: 'home', component: HomeComponent},
+    {path: 'home', component: HomeComponent, canActivate: [OktaAuthGuard], data: onAuthRequired},
     {
-        path: 'results', component: ResultsComponent, // result views
+        path: 'results', component: ResultsComponent, canActivate: [OktaAuthGuard], data: onAuthRequired, // result views
         children: [
             {path: 'list', component: ListComponent},
             {path: 'map', component: MapComponent},
@@ -27,6 +32,10 @@ const routes: Routes = [
             {path: '', redirectTo: 'login', pathMatch: 'full'},
             {path: 'login', component: LoginComponent}
         ]
+    },
+    {
+        path: 'implicit/callback',
+        component: OktaCallbackComponent
     }
 ];
 

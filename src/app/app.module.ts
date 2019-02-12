@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule, onAuthRequired} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HttpClientModule} from '@angular/common/http';
 import {NavigationComponent} from './globals/navigation/navigation.component';
@@ -23,6 +23,10 @@ import {RouterModule} from '@angular/router';
 import { LoginComponent } from './views/auth/login/login.component';
 import { AuthComponent } from './views/auth/auth.component';
 import { FiltersComponent } from './components/filters/filters.component';
+
+// Okta SSO
+import { OktaAuthModule } from '@okta/okta-angular';
+import defaultConfig from '../util/default-config';
 
 @NgModule({
     declarations: [
@@ -56,7 +60,12 @@ import { FiltersComponent } from './components/filters/filters.component';
         ReactiveFormsModule,
         FormsModule,
         MatProgressSpinnerModule,
-        MatTableModule
+        MatTableModule,
+        OktaAuthModule.initAuth({
+            issuer: defaultConfig.oidc.issuer,
+            clientId: defaultConfig.oidc.clientId,
+            redirectUri: defaultConfig.oidc.redirectUri
+        })
     ],
     exports: [
         BrowserAnimationsModule,
