@@ -11,6 +11,7 @@ import {debounceTime, tap, switchMap, finalize} from 'rxjs/operators';
 export class ListComponent implements OnInit {
     searchResults: object;
     isLoading;
+    openFilter;
 
     constructor(private route: ActivatedRoute, private backendApi: BackendApiService) {}
 
