@@ -26,7 +26,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 
 // Okta SSO
 import { OktaAuthModule } from '@okta/okta-angular';
-import defaultConfig from '../util/default-config';
+import defaultConfig from './util/default-config';
 
 @NgModule({
     declarations: [
