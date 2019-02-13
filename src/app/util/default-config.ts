@@ -1,4 +1,4 @@
-import {onAuthRequired} from '../app/app-routing.module';
+import {onAuthRequired} from '../app-routing.module';
 
 export default {
     oidc: {
