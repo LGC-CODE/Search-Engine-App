@@ -16,6 +16,8 @@ const services = require('./services');
 const appHooks = require('./app.hooks');
 const channels = require('./channels');
 
+const sequelize = require('./sequelize');
+
 const app = express(feathers());
 
 // Load app configuration
@@ -30,11 +32,13 @@ app.use(favicon(path.join(app.get('public'), 'favicon.ico')));
 // Host the public folder
 app.use('/', express.static(__dirname + '/public'));
 // app.use('/results/list', express.static(__dirname + '/public'));
-app.use('*', express.static(__dirname + '/public'));
+// app.use('*', express.static(__dirname + '/public'));
 
 // Set up Plugins and providers
 app.configure(express.rest());
 app.configure(socketio());
+
+app.configure(sequelize);
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
@@ -45,7 +49,12 @@ app.configure(channels);
 
 // Configure a middleware for 404s and the error handler
 app.use(express.notFound());
-app.use(express.errorHandler({ logger }));
+// app.use(express.errorHandler({ logger }));
+app.use(express.errorHandler({
+  html: {
+    404: __dirname + '/public/index.html'
+  }
+}));
 
 app.hooks(appHooks);
 
