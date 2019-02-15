@@ -6,7 +6,7 @@ export const environment = {
     okta: {
         clientId: '0oajcymqn9CrPFLSd0h7',
         issuer: 'https://dev-298781.oktapreview.com/oauth2/default',
-        redirectUri: 'http://localhost:4200/implicit/callback',
+        redirectUri: 'https://incyte.herokuapp.com/implicit/callback',
         scope: 'openid profile email',
         onAuthRequired: onAuthRequired
     }
