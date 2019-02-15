@@ -26,7 +26,7 @@ import { FiltersComponent } from './components/filters/filters.component';
 
 // Okta SSO
 import { OktaAuthModule } from '@okta/okta-angular';
-import {OktaConfig} from './classes/okta-config';
+import {environment} from '../environments/environment';
 
 @NgModule({
     declarations: [
@@ -62,9 +62,9 @@ import {OktaConfig} from './classes/okta-config';
         MatProgressSpinnerModule,
         MatTableModule,
         OktaAuthModule.initAuth({
-            issuer: OktaConfig.config.oidc.issuer,
-            clientId: OktaConfig.config.oidc.clientId,
-            redirectUri: OktaConfig.config.oidc.redirectUri
+            issuer: environment.okta.issuer,
+            clientId: environment.okta.clientId,
+            redirectUri: environment.okta.redirectUri
         })
     ],
     exports: [
