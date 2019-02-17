@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {BackendApiService} from '../../../services/backend-api.service';
-import {CircleManager, AgmCircle} from '@agm/core';
+import {CircleManager, AgmCircle, GoogleMapsAPIWrapper} from '@agm/core';
 import {debounceTime, tap, throttleTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {timer, Observable, fromEvent, BehaviorSubject} from 'rxjs';
 
@@ -49,7 +49,8 @@ export class MapComponent implements OnInit {
         }
     ];
 
-    constructor(private backendApi: BackendApiService) {
+    constructor(private backendApi: BackendApiService,
+                private mapsApiWrapper: GoogleMapsAPIWrapper, private circleManager: CircleManager) {
 
         this.circleChange.pipe(
             debounceTime(1000),

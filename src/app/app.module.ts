@@ -29,8 +29,9 @@ import { OktaAuthModule } from '@okta/okta-angular';
 import {environment} from '../environments/environment';
 
 // google maps config
-import {AgmCoreModule} from '@agm/core';
+import {AgmCoreModule, GoogleMapsAPIWrapper, CircleManager} from '@agm/core';
 import {CommonModule} from '@angular/common';
+import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 
 @NgModule({
     declarations: [
@@ -47,7 +48,8 @@ import {CommonModule} from '@angular/common';
         CardsComponent,
         LoginComponent,
         AuthComponent,
-        FiltersComponent
+        FiltersComponent,
+        FilterBarComponent
     ],
     imports: [
         BrowserModule,
@@ -89,6 +91,8 @@ import {CommonModule} from '@angular/common';
         MatTableModule
     ],
     providers: [
+        GoogleMapsAPIWrapper,
+        CircleManager
     ],
     bootstrap: [AppComponent]
 })

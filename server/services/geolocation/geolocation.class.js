@@ -12,10 +12,10 @@ class Service {
   }
 
   async find (params) {
-    console.log(params.query.lat, params.query.lng, params.query.radius * 0.0004);
+    console.log(params.query.lat, params.query.lng, params.query.radius);
     this.coords.lat = params.query.lat;
     this.coords.long = params.query.lng;
-    this.coords.radius = params.query.radius * 0.0004;
+    this.coords.radius = params.query.radius * 0.00051;
 
     return this.sequelClient.query(
         `SELECT city, last_addr_latitude, last_addr_longitude, 3956 * 2 * ASIN(SQRT(POWER(SIN((${this.coords.lat} - abs(last_addr_latitude)) * pi() / 180 / 2), 2) + COS(${this.coords.lat} * pi() / 180) * COS(abs(last_addr_latitude) * pi() / 180) * POWER(SIN((${this.coords.long} - last_addr_longitude) * pi() / 180 / 2), 2))) as distance
