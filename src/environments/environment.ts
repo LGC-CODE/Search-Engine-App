@@ -1,5 +1,3 @@
-import {onAuthRequired} from '../app/app-routing.module';
-
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -11,8 +9,7 @@ export const environment = {
         clientId: '0oajcymqn9CrPFLSd0h7',
         issuer: 'https://dev-298781.oktapreview.com/oauth2/default',
         redirectUri: 'http://localhost:4200/implicit/callback',
-        scope: 'openid profile email',
-        onAuthRequired: onAuthRequired
+        scope: 'openid profile email'
     }
 };
 

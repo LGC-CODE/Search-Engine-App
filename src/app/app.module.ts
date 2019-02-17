@@ -1,5 +1,5 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {NgModule, ApplicationRef} from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppRoutingModule, onAuthRequired} from './app-routing.module';
@@ -27,6 +27,10 @@ import { FiltersComponent } from './components/filters/filters.component';
 // Okta SSO
 import { OktaAuthModule } from '@okta/okta-angular';
 import {environment} from '../environments/environment';
+
+// google maps config
+import {AgmCoreModule} from '@agm/core';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -65,6 +69,10 @@ import {environment} from '../environments/environment';
             issuer: environment.okta.issuer,
             clientId: environment.okta.clientId,
             redirectUri: environment.okta.redirectUri
+        }),
+        CommonModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyAkzxXk1fw2o6_jVVOmA87Lbe100KBRvHk'
         })
     ],
     exports: [

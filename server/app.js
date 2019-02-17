@@ -34,6 +34,13 @@ app.use('/', express.static(__dirname + '/public'));
 // app.use('/results/list', express.static(__dirname + '/public'));
 // app.use('*', express.static(__dirname + '/public'));
 
+app.options('*', function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'http://10.0.0.169:4200');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  //other headers here
+  res.status(200).end();
+});
+
 // Set up Plugins and providers
 app.configure(express.rest());
 app.configure(socketio());
