@@ -6,7 +6,7 @@ import {onAuthRequired} from '../app/app-routing.module';
 
 export const environment = {
     production: false,
-    apiEndpoint: 'http://localhost:3000',
+    apiEndpoint: 'http://localhost:3030',
     okta: {
         clientId: '0oajcymqn9CrPFLSd0h7',
         issuer: 'https://dev-298781.oktapreview.com/oauth2/default',

@@ -12,18 +12,24 @@
                         <mat-spinner diameter="50"></mat-spinner>
                     </mat-option>
                     <ng-container *ngIf="!isLoading">
-                        <mat-table [dataSource]="filteredUsers" class="company-mat-table">
+                        <mat-table [dataSource]="filteredUsers[0]" class="company-mat-table">
                             <ng-container matColumnDef="name">
                                 <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
                                 <mat-cell *matCellDef="let opt">
-                                    {{opt.name}}
+                                    {{opt.first_name}}
                                 </mat-cell>
                             </ng-container>
 
                             <ng-container matColumnDef="address">
-                                <mat-header-cell *matHeaderCellDef>address</mat-header-cell>
+                                <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
                                 <mat-cell *matCellDef="let opt">
-                                    {{opt.address}}
+                                    {{opt.address1}}
+                                </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="city">
+                                <mat-header-cell *matHeaderCellDef>City</mat-header-cell>
+                                <mat-cell *matCellDef="let opt">
+                                    {{opt.city}}
                                 </mat-cell>
                             </ng-container>
                             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
