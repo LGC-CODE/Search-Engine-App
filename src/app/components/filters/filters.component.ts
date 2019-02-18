@@ -95,7 +95,7 @@ export class FiltersComponent implements OnInit {
                 // this.location = position.coords;
                 const params = this.route.snapshot.queryParams;
                 // console.log(params, type);
-                const searchQuery = {...params, lat: position.coords.latitude, lng: position.coords.longitude};
+                const searchQuery = {...params, lat: position.coords.latitude, lng: position.coords.longitude, radius: 10017};
                 // console.log(searchQuery);
                 this.navigateToResults(searchQuery);
                 console.log(position.coords);
@@ -103,7 +103,7 @@ export class FiltersComponent implements OnInit {
         } else {
             const params = this.route.snapshot.queryParams;
             // console.log(params, type);
-            const searchQuery = {...params, lat: null, lng: null};
+            const searchQuery = {...params, lat: null, lng: null, radius: null};
             // console.log(searchQuery);
             this.navigateToResults(searchQuery);
         }

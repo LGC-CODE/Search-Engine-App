@@ -3,6 +3,7 @@ import {BackendApiService} from '../../../services/backend-api.service';
 import {CircleManager, AgmCircle, GoogleMapsAPIWrapper} from '@agm/core';
 import {debounceTime, tap, throttleTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {timer, Observable, fromEvent, BehaviorSubject} from 'rxjs';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
     selector: 'app-map',
@@ -13,6 +14,7 @@ export class MapComponent implements OnInit {
     @ViewChild('circleMap') circleMap: ElementRef;
 
     private circleChange = new BehaviorSubject<any>({});
+    public generatePointsOnMove = false;
     // google maps zoom level
     zoom = 8;
 
@@ -217,7 +219,8 @@ export class MapComponent implements OnInit {
     ];
 
     constructor(private backendApi: BackendApiService,
-        private mapsApiWrapper: GoogleMapsAPIWrapper, private circleManager: CircleManager) {
+                private mapsApiWrapper: GoogleMapsAPIWrapper, private circleManager: CircleManager,
+                private route: ActivatedRoute) {
 
         this.circleChange.pipe(
             debounceTime(1000),
@@ -235,6 +238,7 @@ export class MapComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.applyFilters();
     }
 
     clickedMarker(label: string, index: number) {
@@ -253,16 +257,30 @@ export class MapComponent implements OnInit {
         console.log('dragEnd', m, $event);
     }
 
+    applyFilters() {
+        this.route.queryParams.subscribe(
+            params => {
+                if (!this.generatePointsOnMove) {
+                    console.log(params);
+                    this.backendApi.generateFilteredResults('').toPromise().then(
+                        resp => {
+                            console.log(resp);
+                        }
+                    );
+                }
+            }
+        );
+    }
+
     centerChanged($e) {
-        console.log($e);
-        // $e.coords.radius =  this.circleMap;
-        console.dir(this.circleMap);
         console.log($e);
 
         this.refPoint.lat = $e.lat;
         this.refPoint.lng = $e.lng;
 
-        this.circleChange.next(this.refPoint);
+        if (this.generatePointsOnMove) {
+            this.circleChange.next(this.refPoint);
+        }
     }
 
     radiusChanged($e) {
@@ -276,6 +294,10 @@ export class MapComponent implements OnInit {
                 this.markers = resp[0];
             }
         );
+    }
+
+    togglePointGeneration($event) {
+        this.generatePointsOnMove = $event.target.checked;
     }
 }
 
