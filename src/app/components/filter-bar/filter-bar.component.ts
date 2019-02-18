@@ -33,4 +33,8 @@ export class FilterBarComponent implements OnInit {
     openFilters() {
         this.openFilter = !this.openFilter;
     }
+
+    getFilterStatus($e) {
+        this.openFilter = $e;
+    }
 }

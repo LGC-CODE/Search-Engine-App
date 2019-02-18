@@ -4,6 +4,7 @@ import {switchMap, debounceTime, tap, finalize, startWith, map} from 'rxjs/opera
 import {Observable} from 'rxjs';
 import {BackendApiService} from '../../services/backend-api.service';
 import {Router, ActivatedRoute} from '@angular/router';
+import {SearchService} from '../../services/search.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class SearchBarComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder, private backendApi: BackendApiService, public routers: Router,
-        private route: ActivatedRoute) {}
+        private route: ActivatedRoute, private searchService: SearchService) {}
 
     ngOnInit() {
         this.usersForm = this.fb.group({
@@ -51,6 +52,7 @@ export class SearchBarComponent implements OnInit {
     }
 
     optionSelect() {
+        this.searchService.isModalOpen.next(false);
         this.routers.navigate(['results/list'], {queryParams: {query: this.searchQuery ? this.searchQuery : ''}});
     }
 }

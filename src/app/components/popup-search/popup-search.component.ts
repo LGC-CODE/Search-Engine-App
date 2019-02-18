@@ -13,10 +13,16 @@ export class PopupSearchComponent implements OnInit {
     constructor(public activeModal: NgbActiveModal, private searchService: SearchService) {}
 
     ngOnInit() {
+        this.searchService.isModalOpen.subscribe(
+            isOpen => {
+                if (!isOpen) {
+                    this.activeModal.dismiss('Cross click');
+                }
+            }
+        );
     }
 
     close() {
-        this.activeModal.dismiss('Cross click');
         this.searchService.isModalOpen.next(false);
     }
 

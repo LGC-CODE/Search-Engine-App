@@ -67,5 +67,5 @@
             </div>
         </div>
     </div>
-    <app-filters *ngIf="openFilter"></app-filters>
+    <app-filters *ngIf="openFilter" (closeFilter)="getFilterStatus($event)"></app-filters>
 </div>
