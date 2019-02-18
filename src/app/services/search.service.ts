@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {SearchConfig} from '../classes/search-config';
 import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class SearchService {
-    private searchConfig: BehaviorSubject<SearchConfig>;
+    public isModalOpen = new BehaviorSubject<any>(false);
 
-  constructor() { }
+    constructor() {}
 }

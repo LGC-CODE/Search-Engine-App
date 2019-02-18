@@ -35,7 +35,7 @@ export class SearchBarComponent implements OnInit {
                 debounceTime(300),
                 tap(() => this.isLoading = true),
                 switchMap(value => {
-                    this.searchQuery = typeof value === 'string' ? value : value.name;
+                    this.searchQuery = typeof value === 'string' ? value : value;
                     return this.backendApi.search(this.searchQuery, 1)
                         .pipe(
                             finalize(() => this.isLoading = false),
@@ -50,8 +50,7 @@ export class SearchBarComponent implements OnInit {
         if (user) { return user.name; }
     }
 
-    optionSelect($e) {
-        const selected = $e.option.value;
+    optionSelect() {
         this.routers.navigate(['results/list'], {queryParams: {query: this.searchQuery ? this.searchQuery : ''}});
     }
 }

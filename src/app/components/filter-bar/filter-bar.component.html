@@ -1,3 +1,71 @@
-<p>
-  filter-bar works!
-</p>
+<div class="list-wrapper bg-secondary text-white px-3">
+    <div class="list-filters row d-flex justify-content-between">
+        <div class="left-content col-md-6 col-lg-6">
+            <div class="d-flex justify-content-start flex-row">
+                <div class="filter-actions d-flex flex-row">
+                    <div (click)="openFilters()" class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon" [ngClass]="openFilter ? 'ion-md-close': 'ion-md-options'"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            {{ openFilter ? 'Close Filters' : 'Filters'}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-content col-md-6 col-lg-6">
+            <div class="d-flex justify-content-end flex-row">
+                <div class="filter-actions d-flex flex-row">
+                    <div class="action p-2 d-flex justify-content-center flex-column">
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-light" id="dropdownBasic1" ngbDropdownToggle>
+                                {{ sortByText }}
+                            </button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <button class="dropdown-item" (click)="sortBy('first_name', 'First Name')">First Name</button>
+                                <button class="dropdown-item" (click)="sortBy('last_name', 'Last Name')">Last Name</button>
+                                <button class="dropdown-item" (click)="sortBy('city', 'City')">City</button>
+                                <button class="dropdown-item" (click)="sortBy('state', 'State')">State</button>
+                                <button class="dropdown-item" (click)="sortBy('zip5', 'Zip Code')">ZIP</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon ion-md-menu"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            View
+                        </div>
+                    </div>
+                    <div class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon ion-md-download"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            Download
+                        </div>
+                    </div>
+                    <div class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon ion-ios-share"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            Send
+                        </div>
+                    </div>
+                    <div class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon ion-md-map"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            Map
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-filters *ngIf="openFilter"></app-filters>
+</div>

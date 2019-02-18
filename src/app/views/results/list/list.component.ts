@@ -22,14 +22,14 @@ export class ListComponent implements OnInit {
                 tap(() => this.isLoading = true),
                 switchMap(value => {
                     console.log(value);
-                    return this.backendApi.search(typeof value === 'string' ? value : value.query, 1)
+                    return this.backendApi.search(value, 1)
                         .pipe(
                             finalize(() => this.isLoading = false),
                         );
                 }
                 )
             )
-            .subscribe(users => this.searchResults = users);
+            .subscribe(users => this.searchResults = users[0]);
     }
 
 }

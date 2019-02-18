@@ -1,13 +1,13 @@
-<div class="search pb-5">
+<div class="search">
     <div class="search-bar">
         <form class="example-form" [formGroup]='usersForm'>
             <mat-form-field class="search-input">
                 <input placeholder="Find HCP's..." type="text" 
                        matInput [matAutocomplete]="auto" formControlName='userInput'>
-                <div class="search-btn btn btn-primary btn-lg" [routerLink]="[ '/list']">
+                <div class="search-btn btn btn-primary btn-lg" (click)="optionSelect()">
                     <i class="icon ion-md-search"></i>
                 </div>
-<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='optionSelect($event)'>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='optionSelect($event)'>
                     <mat-option *ngIf="isLoading" class="is-loading">
                         <mat-spinner diameter="50"></mat-spinner>
                     </mat-option>

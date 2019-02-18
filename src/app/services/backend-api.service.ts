@@ -10,13 +10,19 @@ import {switchMap, debounceTime, tap, finalize, startWith, map, throttleTime} fr
 })
 export class BackendApiService {
     private searchPath = '/search-records?search=';
+    private sortByPath = '&sortBy=';
     private geoSpacialPath = '/geolocation';
 
     constructor(private http: HttpClient) {}
 
     search(filter, page = 1) {
         console.log(filter);
-        return this.http.get<any>(environment.apiEndpoint + this.searchPath + encodeURI(filter))
+        const query = typeof filter === 'string' ? filter : filter.query;
+        const searchQuery = environment.apiEndpoint +
+                            this.searchPath + encodeURI(query) +
+                            (filter.sortby ? this.sortByPath + filter.sortby : '');
+                            console.log(searchQuery);
+        return this.http.get<any>(searchQuery)
             .pipe(
                 map(
                     (response: any) => {

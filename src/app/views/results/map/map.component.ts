@@ -16,6 +16,173 @@ export class MapComponent implements OnInit {
     // google maps zoom level
     zoom = 8;
 
+    public iconUrlPath = '/assets/maps/marker.png';
+
+    public styles = [
+        {
+            'featureType': 'water',
+            'elementType': 'all',
+            'stylers': [
+                {
+                    'visibility': 'simplified'
+                },
+                {
+                    'hue': '#e9ebed'
+                },
+                {
+                    'saturation': -78
+                },
+                {
+                    'lightness': 67
+                }
+            ]
+        },
+        {
+            'featureType': 'landscape',
+            'elementType': 'all',
+            'stylers': [
+                {
+                    'visibility': 'simplified'
+                },
+                {
+                    'hue': '#ffffff'
+                },
+                {
+                    'saturation': -100
+                },
+                {
+                    'lightness': 100
+                }
+            ]
+        },
+        {
+            'featureType': 'road',
+            'elementType': 'geometry',
+            'stylers': [
+                {
+                    'visibility': 'simplified'
+                },
+                {
+                    'hue': '#bbc0c4'
+                },
+                {
+                    'saturation': -93
+                },
+                {
+                    'lightness': 31
+                }
+            ]
+        },
+        {
+            'featureType': 'poi',
+            'elementType': 'all',
+            'stylers': [
+                {
+                    'visibility': 'off'
+                },
+                {
+                    'hue': '#ffffff'
+                },
+                {
+                    'saturation': -100
+                },
+                {
+                    'lightness': 100
+                }
+            ]
+        },
+        {
+            'featureType': 'road.local',
+            'elementType': 'geometry',
+            'stylers': [
+                {
+                    'visibility': 'simplified'
+                },
+                {
+                    'hue': '#e9ebed'
+                },
+                {
+                    'saturation': -90
+                },
+                {
+                    'lightness': -8
+                }
+            ]
+        },
+        {
+            'featureType': 'transit',
+            'elementType': 'all',
+            'stylers': [
+                {
+                    'visibility': 'on'
+                },
+                {
+                    'hue': '#e9ebed'
+                },
+                {
+                    'saturation': 10
+                },
+                {
+                    'lightness': 69
+                }
+            ]
+        },
+        {
+            'featureType': 'administrative.locality',
+            'elementType': 'all',
+            'stylers': [
+                {
+                    'visibility': 'on'
+                },
+                {
+                    'hue': '#2c2e33'
+                },
+                {
+                    'saturation': 7
+                },
+                {
+                    'lightness': 19
+                }
+            ]
+        },
+        {
+            'featureType': 'road',
+            'elementType': 'labels',
+            'stylers': [
+                {
+                    'visibility': 'on'
+                },
+                {
+                    'hue': '#bbc0c4'
+                },
+                {
+                    'saturation': -93
+                },
+                {
+                    'lightness': 31
+                }
+            ]
+        },
+        {
+            'featureType': 'road.arterial',
+            'elementType': 'labels',
+            'stylers': [
+                {
+                    'visibility': 'simplified'
+                },
+                {
+                    'hue': '#bbc0c4'
+                },
+                {
+                    'saturation': -93
+                },
+                {
+                    'lightness': -2
+                }
+            ]
+        }
+    ];
+
     // initial center position for the map
     public mapDefaults = {
         lat: 37.805769,
@@ -25,7 +192,7 @@ export class MapComponent implements OnInit {
     public refPoint = {
         lat: 37.805769,
         lng: -122,
-        radius: 4000
+        radius: 10017
     };
 
     markers: Array<Marker> = [
@@ -50,7 +217,7 @@ export class MapComponent implements OnInit {
     ];
 
     constructor(private backendApi: BackendApiService,
-                private mapsApiWrapper: GoogleMapsAPIWrapper, private circleManager: CircleManager) {
+        private mapsApiWrapper: GoogleMapsAPIWrapper, private circleManager: CircleManager) {
 
         this.circleChange.pipe(
             debounceTime(1000),

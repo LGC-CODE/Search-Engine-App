@@ -1,0 +1,17 @@
+:host {
+    position: absolute;
+    height: 10vh;
+    width: 30vw;
+    z-index: 1;
+
+    label {
+        font-size: 12px;
+    }
+
+    .list-group-item {
+        &.active {
+            background-color: #6c757d;
+            border-color: white;
+        }
+    }
+}

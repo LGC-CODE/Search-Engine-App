@@ -1,54 +1,3 @@
-<div class="list-wrapper bg-secondary text-white px-3">
-    <div class="list-filters row d-flex justify-content-between">
-        <div class="right-content col-md-12 col-lg-12">
-            <div class="d-flex justify-content-end flex-row">
-                <div class="filter-actions d-flex flex-row">
-                    <app-filters *ngIf="openFilter"></app-filters>
-                    <div (click)="openFilter =! openFilter" class="action p-2 d-flex justify-content-center flex-column">
-                        <div class="icon align-self-center">
-                            <i class="icon ion-md-funnel"></i>
-                        </div>
-                        <div class="option px-2 pb-2 align-self-center">
-                            Filter/Sort
-                        </div>
-                    </div>
-                    <div class="action p-2 d-flex justify-content-center flex-column">
-                        <div class="icon align-self-center">
-                            <i class="icon ion-md-menu"></i>
-                        </div>
-                        <div class="option px-2 pb-2 align-self-center">
-                            View
-                        </div>
-                    </div>
-                    <div class="action p-2 d-flex justify-content-center flex-column">
-                        <div class="icon align-self-center">
-                            <i class="icon ion-md-download"></i>
-                        </div>
-                        <div class="option px-2 pb-2 align-self-center">
-                            Download
-                        </div>
-                    </div>
-                    <div class="action p-2 d-flex justify-content-center flex-column">
-                        <div class="icon align-self-center">
-                            <i class="icon ion-ios-share"></i>
-                        </div>
-                        <div class="option px-2 pb-2 align-self-center">
-                            Send
-                        </div>
-                    </div>
-                    <div class="action p-2 d-flex align-self-center">
-                        <div class="btn btn-primary btn-sm col-md-12">Map View <i class="ion-md-arrow-dropright"></i></div>
-                    </div>
-                </div>
-                <!-- <div class="filter-buttons d-flex flex-row"> -->
-                <!-- <div class="buttons p-2 flex-fill align-self-center">
-                    <div class="btn btn-primary btn-sm col-md-12">Smart Share</div>
-                </div> -->
-                <!-- </div> -->
-            </div>
-        </div>
-    </div>
-</div>
 <table class="table">
     <thead class="bg-primary text-light">
         <tr>
@@ -82,12 +31,12 @@
             </th>
             <td>{{ professional.profId }}</td>
             <td>{{ professional.npi }}</td>
-            <td>{{ professional.name.split(' ')[0] }}</td>
+            <td>{{ professional.first_name }}</td>
             <td>{{ 'n/a' }}</td>
-            <td>{{ professional.name.split(' ')[1] }}</td>
-            <td>{{ professional.address.split(', ')[0] }}</td>
-            <td>{{ professional.address.split(', ')[1] }}</td>
-            <td>{{ professional.address.split(', ')[3] }}</td>
+            <td>{{ professional.last_name }}</td>
+            <td>{{ professional.address1 }}</td>
+            <td>{{ professional.city }}</td>
+            <td>{{ professional.zip5 }}</td>
             <td>{{ professional.crm }}</td>
             <td>{{ professional.spend }}</td>
         </tr>

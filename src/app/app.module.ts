@@ -1,6 +1,6 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule, ApplicationRef} from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbDropdownModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppRoutingModule, onAuthRequired} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -32,6 +32,7 @@ import {environment} from '../environments/environment';
 import {AgmCoreModule, GoogleMapsAPIWrapper, CircleManager} from '@agm/core';
 import {CommonModule} from '@angular/common';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
+import { PopupSearchComponent } from './components/popup-search/popup-search.component';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
         LoginComponent,
         AuthComponent,
         FiltersComponent,
-        FilterBarComponent
+        FilterBarComponent,
+        PopupSearchComponent
     ],
     imports: [
         BrowserModule,
@@ -67,6 +69,8 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
         FormsModule,
         MatProgressSpinnerModule,
         MatTableModule,
+        NgbDropdownModule,
+        NgbModule.forRoot(),
         OktaAuthModule.initAuth({
             issuer: environment.okta.issuer,
             clientId: environment.okta.clientId,
@@ -94,6 +98,9 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
         GoogleMapsAPIWrapper,
         CircleManager
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    entryComponents: [
+        PopupSearchComponent
+    ]
 })
 export class AppModule {}
