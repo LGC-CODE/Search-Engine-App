@@ -14,9 +14,11 @@
                     New Search
                 </div>
             </div>
-            <div class="d-flex justify-content-center flex-column px-3">
+            <div class="btn" [ngClass]="hcpActive ? 'btn-light': 'btn-primary'" (click)="toggleHcp()">
+                <div class="d-flex justify-content-center flex-column px-3">
                 <i class="icon ion-md-person"></i>
-                Add HCP
+                    Add HCP
+                </div>
             </div>
         </div>
     </div>

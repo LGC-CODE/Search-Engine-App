@@ -12,13 +12,13 @@ export class FilterBarComponent implements OnInit {
     public currentRoute: string;
 
     constructor(private route: ActivatedRoute, private router: Router) {
-        this.currentRoute = this.router.url.split('?')[0];
     }
 
     ngOnInit() {
     }
 
     sortBy(type: string, label: string) {
+        this.currentRoute = this.router.url.split('?')[0];
         this.sortByText = label;
         this.route.queryParams.subscribe(
             params => {

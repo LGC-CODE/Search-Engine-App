@@ -33,6 +33,8 @@ import {AgmCoreModule, GoogleMapsAPIWrapper, CircleManager} from '@agm/core';
 import {CommonModule} from '@angular/common';
 import { FilterBarComponent } from './components/filter-bar/filter-bar.component';
 import { PopupSearchComponent } from './components/popup-search/popup-search.component';
+import { PopupNewHcpComponent } from './components/popup-new-hcp/popup-new-hcp.component';
+import { NewHcpComponent } from './components/new-hcp/new-hcp.component';
 
 @NgModule({
     declarations: [
@@ -51,7 +53,9 @@ import { PopupSearchComponent } from './components/popup-search/popup-search.com
         AuthComponent,
         FiltersComponent,
         FilterBarComponent,
-        PopupSearchComponent
+        PopupSearchComponent,
+        PopupNewHcpComponent,
+        NewHcpComponent
     ],
     imports: [
         BrowserModule,
@@ -100,7 +104,8 @@ import { PopupSearchComponent } from './components/popup-search/popup-search.com
     ],
     bootstrap: [AppComponent],
     entryComponents: [
-        PopupSearchComponent
+        PopupSearchComponent,
+        PopupNewHcpComponent
     ]
 })
 export class AppModule {}

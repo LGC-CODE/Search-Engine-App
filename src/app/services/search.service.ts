@@ -7,6 +7,7 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class SearchService {
     public isModalOpen = new BehaviorSubject<any>(false);
+    public isHcpOpen = new BehaviorSubject<any>(false);
 
     constructor() {}
 }

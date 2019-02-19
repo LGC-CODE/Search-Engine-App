@@ -150,12 +150,10 @@ export class FiltersComponent implements OnInit {
 
     handleMultipleQueries(query, appendedQuery) {
         const queryParts = query.split(' ');
-        if (queryParts.length < 4) {
+        if (queryParts.length < 2) {
             return query + ' ' + appendedQuery;
         } else {
-            queryParts.pop();
-            queryParts.push(appendedQuery);
-            return queryParts.join(' ');
+            return queryParts[0] + ' ' + appendedQuery;
         }
     }
 
