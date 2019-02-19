@@ -32,11 +32,15 @@
                         </div>
                     </div>
                     <div class="action p-2 d-flex justify-content-center flex-column">
-                        <div class="icon align-self-center">
-                            <i class="icon ion-md-menu"></i>
-                        </div>
-                        <div class="option px-2 pb-2 align-self-center">
-                            View
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-outline-light" id="dropdownBasic1" ngbDropdownToggle>
+                                Change View
+                            </button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <button class="dropdown-item" (click)="getView('list')">List</button>
+                                <button class="dropdown-item" (click)="getView('cards')">Cards</button>
+                                <button class="dropdown-item" (click)="getView('map')">Map</button>
+                            </div>
                         </div>
                     </div>
                     <div class="action p-2 d-flex justify-content-center flex-column">

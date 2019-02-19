@@ -56,7 +56,7 @@ export class FiltersComponent implements OnInit {
 
     getTerritory($e, type) {
         // console.log($e);
-        this.filterTypes.territory = type;
+        this.filterTypes.territory = $e.target.checked ? type : null;
         this.filtersService.filterModalSpecs.next(this.filterTypes);
         this.validateTerritory(type, $e.target.checked);
     }

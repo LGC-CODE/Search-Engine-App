@@ -7,7 +7,7 @@
                 <div class="search-btn btn btn-primary btn-lg" (click)="optionSelect()">
                     <i class="icon ion-md-search"></i>
                 </div>
-                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='optionSelect($event)'>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='optionSelect()'>
                     <mat-option *ngIf="isLoading" class="is-loading">
                         <mat-spinner diameter="50"></mat-spinner>
                     </mat-option>

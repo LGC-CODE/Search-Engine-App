@@ -198,29 +198,11 @@ export class MapComponent implements OnInit {
     };
 
     markers: Array<Marker> = [
-        {
-            lat: 51.673858,
-            lng: 7.815982,
-            label: 'A',
-            draggable: true
-        },
-        {
-            lat: 51.373858,
-            lng: 7.215982,
-            label: 'B',
-            draggable: false
-        },
-        {
-            lat: 51.723858,
-            lng: 7.895982,
-            label: 'C',
-            draggable: true
-        }
     ];
 
     constructor(private backendApi: BackendApiService,
-                private mapsApiWrapper: GoogleMapsAPIWrapper, private circleManager: CircleManager,
-                private route: ActivatedRoute) {
+        private mapsApiWrapper: GoogleMapsAPIWrapper, private circleManager: CircleManager,
+        private route: ActivatedRoute) {
 
         this.circleChange.pipe(
             debounceTime(1000),
@@ -231,7 +213,9 @@ export class MapComponent implements OnInit {
         ).subscribe(
             resp => {
                 console.log(resp[0]);
-                this.markers = resp[0];
+                if (this.generatePointsOnMove) {
+                    this.markers = resp[0];
+                }
             }
         );
 
@@ -264,7 +248,8 @@ export class MapComponent implements OnInit {
                     console.log(params);
                     this.backendApi.generateFilteredResults('').toPromise().then(
                         resp => {
-                            console.log(resp);
+                            console.log(resp[0]);
+                            this.markers = resp[0];
                         }
                     );
                 }
@@ -273,12 +258,12 @@ export class MapComponent implements OnInit {
     }
 
     centerChanged($e) {
-        console.log($e);
-
-        this.refPoint.lat = $e.lat;
-        this.refPoint.lng = $e.lng;
-
         if (this.generatePointsOnMove) {
+            console.log($e);
+
+            this.refPoint.lat = $e.lat;
+            this.refPoint.lng = $e.lng;
+
             this.circleChange.next(this.refPoint);
         }
     }
@@ -286,18 +271,22 @@ export class MapComponent implements OnInit {
     radiusChanged($e) {
         console.log($e);
 
-        this.refPoint.radius = $e;
+        // this.refPoint.radius = $e;
 
-        this.backendApi.generateGeoSpacial(this.refPoint).subscribe(
-            resp => {
-                console.log(resp);
-                this.markers = resp[0];
-            }
-        );
+        // this.backendApi.generateGeoSpacial(this.refPoint).subscribe(
+        //     resp => {
+        //         console.log(resp);
+        //         this.markers = resp[0];
+        //     }
+        // );
     }
 
     togglePointGeneration($event) {
         this.generatePointsOnMove = $event.target.checked;
+    }
+
+    parseNumber(num) {
+        return parseInt(num, 10);
     }
 }
 

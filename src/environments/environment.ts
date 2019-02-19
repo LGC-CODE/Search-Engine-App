@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiEndpoint: 'http://localhost:3030',
+    apiEndpoint: 'https://localhost:3030',
     okta: {
         clientId: '0oajcymqn9CrPFLSd0h7',
         issuer: 'https://dev-298781.oktapreview.com/oauth2/default',

@@ -1,10 +1,10 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {switchMap, debounceTime, tap, finalize, startWith, map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
 import {BackendApiService} from '../../services/backend-api.service';
 import {Router, ActivatedRoute} from '@angular/router';
 import {SearchService} from '../../services/search.service';
+import {FiltersService} from '../../services/filters.service';
 
 
 @Component({
@@ -22,7 +22,7 @@ export class SearchBarComponent implements OnInit {
 
     constructor(
         private fb: FormBuilder, private backendApi: BackendApiService, public routers: Router,
-        private route: ActivatedRoute, private searchService: SearchService) {}
+        private route: ActivatedRoute, private searchService: SearchService, private filtersService: FiltersService) {}
 
     ngOnInit() {
         this.usersForm = this.fb.group({
@@ -54,5 +54,6 @@ export class SearchBarComponent implements OnInit {
     optionSelect() {
         this.searchService.isModalOpen.next(false);
         this.routers.navigate(['results/list'], {queryParams: {query: this.searchQuery ? this.searchQuery : ''}});
+        this.filtersService.filterModalSpecs.next({});
     }
 }

@@ -7,8 +7,8 @@
                 </label>
             </div>
             <div class="left">
-                <div class="profId">{{ results.profId }}</div>
-                <div class="name">{{ results.name }}</div>
+                <div class="profId">{{ results.prof_id }}</div>
+                <div class="name">{{ results.first_name + ' ' + results.last_name }}</div>
                 <div class="degree">{{ results.degree }}</div>
             </div>
             <div class="right">
@@ -17,11 +17,11 @@
                 <div class="spend">SPEND <i class="icon ion-md-checkmark-circle" [style.color]="results.spend ? 'lightgreen': 'red'"></i></div>
             </div>
             <div class="bottom">
-                <div class="address street">{{ results.address.split(', ')[0] }}</div>
+                <div class="address street">{{ results.address1 }}</div>
                 <div class="sub-bottom d-flex flex-row justify-content-between">
-                    <div class="address city">{{ results.address.split(', ')[1] }}</div>
-                    <div class="address state">{{ results.address.split(', ')[2] }}</div>
-                    <div class="address state">{{ results.address.split(', ')[3] }}</div>
+                    <div class="address city">{{ results.city }}</div>
+                    <div class="address state">{{ results.state }}</div>
+                    <div class="address state">{{ results.zip5 }}</div>
                 </div>
             </div>
         </div>

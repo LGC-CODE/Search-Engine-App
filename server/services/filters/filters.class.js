@@ -19,27 +19,33 @@ class Service {
     const geolocationFormula = params.query.lat ? `, 3956 * 2 * ASIN(SQRT(POWER(SIN((${params.query.lat} - abs(last_addr_latitude)) * pi() / 180 / 2), 2) + COS(${params.query.lat} * pi() / 180) * COS(abs(last_addr_latitude) * pi() / 180) * POWER(SIN((${params.query.lng} - last_addr_longitude) * pi() / 180 / 2), 2)))` : '';
 
     const selectQuery = `
-       having distance < ${params.query.radius ? params.query.radius : ''} ORDER BY distance `
+       having distance < ${params.query.radius ? params.query.radius * 0.00051 : ''}`
+    const distanceQuery = ` ORDER BY distance `
 
-    const sortbyQuery = ` order by '${params.query.sortby ? params.query.sortby : ''}' desc`
+    const sortbyQuery = ` order by ${params.query.sortby ? params.query.sortby : ''} asc`
 
     // console.log(concatinatedSearchQuery);
 
     const masterQuery =
-      `select first_name, middle_name, last_name, best_loc, loc_id, address1, city, state, zip5` +
+      `select first_name, middle_name, last_name, best_loc, loc_id, address1, city, state, zip5, last_addr_latitude, last_addr_longitude` +
 
       (params.query.lat ? `${geolocationFormula} as distance` : '') + // geolocation query
 
-      ` from zmdmp_profs inner join zmdmp_locs on zmdmp_profs.best_loc = zmdmp_locs.loc_id` +
-      ` where concat(first_name, ' ', last_name, ' ', address1, ' ', city, ' ', state, ' ', zip5) 
-       
-      like '%${paramsArray[0]}%${concatinatedSearchQuery}'` + // search query
-
+      ` from zmdmp_profs inner join zmdmp_locs on zmdmp_profs.best_loc = zmdmp_locs.loc_id ` +
+      
       (params.query.lat ? selectQuery : '') + // geolocation results query
+      
+      ' and concat(first_name, " ", last_name, " ", address1, " ", city, " ", state, " ", zip5) ' +
+       
+      
+      `like '%${paramsArray[0]}%${concatinatedSearchQuery}'` + // search query
+
 
       (params.query.sortby && !params.query.lat ? sortbyQuery : '') + // sort by query
 
-      ` limit 10000;`
+      (params.query.lat ? distanceQuery : '') +
+
+      ` limit 1000;`
 
     console.log(masterQuery);
     return this.sequelClient.query(masterQuery, {

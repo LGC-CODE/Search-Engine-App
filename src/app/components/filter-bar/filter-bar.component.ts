@@ -30,6 +30,17 @@ export class FilterBarComponent implements OnInit {
         );
     }
 
+    getView(type) {
+        this.route.queryParams.subscribe(
+            params => {
+                // console.log(params, type);
+                const searchQuery = {...params};
+                // console.log(searchQuery);
+                this.router.navigate([`/results/${type}`], {queryParams: searchQuery});
+            }
+        );
+    }
+
     openFilters() {
         this.openFilter = !this.openFilter;
     }

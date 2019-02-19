@@ -13,8 +13,8 @@ body {
 .blog-card {
     position: relative;
     display: inline-block;
-    width: 340px;
-    height: 450px;
+    width: 20vw;
+    height: 30vh;
     font-family: 'Droid Serif', serif;
     color: #fff;
     margin: 0 auto;
@@ -23,8 +23,9 @@ body {
     box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
     text-align: center;
     transition: all 0.4s;
-    background: #2a7afd center no-repeat;
+    background: url(../../../../assets/cards/bg-card.jpg) center no-repeat;
     background-size: cover;
+    pointer-events: all;
 }
 
 .blog-card a {
@@ -54,20 +55,24 @@ body {
     z-index: 15;
 }
 
+.blog-card:active ,
 .blog-card:hover {
     box-shadow: 0px 18px 20px -9px rgba(0, 10, 30, 0.75);
 }
 
+.blog-card:active .card-info,
 .blog-card:hover .card-info {
     opacity: 1;
-    bottom: 200px;
+    bottom: 130px;
 }
 
-.blog-card:hover .color-overlay {
+.blog-card:hover .color-overlay,
+.blog-card:active .color-overlay {
     background: rgba(28, 28, 210, 0.36);
 }
 
-.blog-card:hover .title-content {
+.blog-card:hover .title-content,
+.blog-card:active .title-content {
     margin-top: 40px;
 }
 
@@ -91,29 +96,30 @@ body {
 
     .left {
         position: absolute;
-        left: 40px;
+        left: 15px;
         text-align: left;
     }
 
     .right {
         position: absolute;
-        right: 40px;
+        right: 15px;
         text-align: right;
     }
 
     .bottom {
         position: absolute;
         bottom: 9px;
-        left: 40px;
+        left: 15px;
         text-align: left;
 
         .sub-bottom {
-            width: 260px;
+            width: 245px;
         }
     }
 }
 
-.blog-card:hover h3:after {
+.blog-card:hover h3:after,
+.blog-card:active h3:after {
 
     animation: changeLetter 0.3s 1 linear;
     width: 80%
@@ -134,6 +140,7 @@ h1 {
     transition: all 0.2s
 }
 
+.blog-card h3 a:active,
 .blog-card h3 a:hover {
     text-shadow: 0px 8px 20px rgba(0, 0, 0, 0.95);
 }
@@ -171,7 +178,8 @@ h3:after {
     color: #ddd
 }
 
-.intro a:hover {
+.intro a:hover,
+.intro a:active {
     text-decoration: underline
 }
 
@@ -202,12 +210,14 @@ h3:after {
     font-size: 0.8em
 }
 
-.card-info a:hover {
+.card-info a:hover
+.card-info a:active {
     background: black;
     color: #fff;
 }
 
-.card-info a:hover span {
+.card-info a:hover span
+.card-info a:active span {
     filter: brightness(10);
     opacity: 1;
 }
@@ -234,7 +244,8 @@ h3:after {
     height: 15px
 }
 
-.utility-info a:hover {
+.utility-info a:hover,
+.utility-info a:active {
     text-decoration: underline
 }
 
@@ -332,6 +343,8 @@ h3:after {
     }
 
     .blog-card:hover .title-content,
+    .title-content,
+    .blog-card:active .title-content,
     .title-content {
         margin-top: 40px
     }
@@ -458,7 +471,7 @@ h3:after {
 }
 
 .profile-bio,
-.profile-nav-1 a.active,
+.profile-nav-1 a.focus,
 .profile-nav-1 a:hover {
     color: rgba(20, 20, 21, 0.59) !important;
     font-size: 1.2rem
@@ -475,7 +488,8 @@ h3:after {
     transition: all 0.2s
 }
 
-.pagination-button:hover {
+.pagination-button:hover,
+.pagination-button:active {
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2)
 }
 
@@ -508,7 +522,8 @@ h3:after {
     stroke: #fff !important
 }
 
-.single-pen:hover h3:after {
+.single-pen:hover h3:after,
+.single-pen:active h3:after {
     width: 40%;
     transition: all 0.2s
 }
