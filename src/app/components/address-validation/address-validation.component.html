@@ -1,0 +1,27 @@
+<!-- <div class="input-group">
+    <div class="input-group-prepend">
+        <div class="input-group-text">
+            <input type="radio" aria-label="Radio button for following text input">
+        </div>
+    </div>
+
+</div> -->
+<div class="modal-body">
+    <div class="d-flex justify-content-center flex-column">
+        <h3><u>Add Healthcare Professional</u></h3>
+        <h2>Address Validation</h2>
+        <p>Please review your address and make any necessary changes.</p>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <div class="input-group-text">
+                    <input type="radio" aria-label="Radio button for following text input">
+                </div>
+            </div>
+            <div class="">{{ addressEntry.address1 }}</div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer d-flex justify-content-end">
+    <button type="button" class="btn btn-outline-dark mr-5" (click)="goBack()">Back</button>
+    <button type="button" class="btn btn-outline-dark mr-5" (click)="submit()">Submit</button>
+</div>

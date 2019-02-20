@@ -8,6 +8,8 @@ import {SearchService} from '../../services/search.service';
     styleUrls: ['./popup-new-hcp.component.scss']
 })
 export class PopupNewHcpComponent implements OnInit {
+    public formSpecs;
+    public showNow = 'form';
 
     constructor(public activeModal: NgbActiveModal, private searchService: SearchService) {}
 
@@ -25,4 +27,13 @@ export class PopupNewHcpComponent implements OnInit {
         this.searchService.isHcpOpen.next(false);
     }
 
+    getFormStatus($e) {
+        console.log($e);
+        this.formSpecs = $e;
+        this.showNow = 'validation';
+    }
+
+    goBackToForm($e) {
+        this.showNow = $e;
+    }
 }

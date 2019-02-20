@@ -35,6 +35,7 @@ import { FilterBarComponent } from './components/filter-bar/filter-bar.component
 import { PopupSearchComponent } from './components/popup-search/popup-search.component';
 import { PopupNewHcpComponent } from './components/popup-new-hcp/popup-new-hcp.component';
 import { NewHcpComponent } from './components/new-hcp/new-hcp.component';
+import { AddressValidationComponent } from './components/address-validation/address-validation.component';
 
 @NgModule({
     declarations: [
@@ -55,7 +56,8 @@ import { NewHcpComponent } from './components/new-hcp/new-hcp.component';
         FilterBarComponent,
         PopupSearchComponent,
         PopupNewHcpComponent,
-        NewHcpComponent
+        NewHcpComponent,
+        AddressValidationComponent
     ],
     imports: [
         BrowserModule,

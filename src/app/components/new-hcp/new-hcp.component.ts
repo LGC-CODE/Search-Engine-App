@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
     selector: 'app-new-hcp',
@@ -7,6 +7,8 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NewHcpComponent implements OnInit {
     private location_id = Math.floor(Math.random() * 10000000000);
+    @Output() formStatus = new EventEmitter<any>();
+
     public hcpEntry = {
         prof_id: '',
         status: '',
@@ -312,6 +314,17 @@ export class NewHcpComponent implements OnInit {
     getState(type) {
         console.log(type);
         this.addressEntry.state = type;
+    }
+
+    submit() {
+        console.log(this.addressEntry);
+        console.log(this.hcpEntry);
+
+        this.formStatus.next({
+            hcpEntry: this.hcpEntry,
+            addressEntry: this.addressEntry,
+            status: 'complete'
+        });
     }
 
 }

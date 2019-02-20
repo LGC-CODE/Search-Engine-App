@@ -1,22 +1,25 @@
-<div class="">
+<div class="modal-body">
     <label>Name</label>
     <div class="form-wrap level-1 d-flex justify-content-between">
         <div class="form-input">
             <label for="basic-url">*Last Name</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" [(ngModel)]="hcpEntry.last_name" class="form-control" id="basic-url"
+                    aria-describedby="basic-addon3">
             </div>
         </div>
         <div class="form-input">
             <label for="basic-url">*First Name</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" [(ngModel)]="hcpEntry.first_name" class="form-control" id="basic-url"
+                    aria-describedby="basic-addon3">
             </div>
         </div>
         <div class="form-input">
             <label for="basic-url">Middle Name</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" [(ngModel)]="hcpEntry.middle_name" class="form-control" id="basic-url"
+                    aria-describedby="basic-addon3">
             </div>
         </div>
         <div class="form-input">
@@ -92,13 +95,15 @@
         <div class="form-input w-50 mr-4">
             <label for="basic-url">*Address 1</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" [(ngModel)]="addressEntry.address1" class="form-control" id="basic-url"
+                    aria-describedby="basic-addon3">
             </div>
         </div>
         <div class="form-input w-50">
             <label for="basic-url">Address 2</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" [(ngModel)]="addressEntry.address2" class="form-control" id="basic-url"
+                    aria-describedby="basic-addon3">
             </div>
         </div>
     </div>
@@ -107,27 +112,32 @@
         <div class="form-input mr-5">
             <label for="basic-url">*City</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" [(ngModel)]="addressEntry.city" class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
         </div>
         <div class="form-input mr-5">
-            <label for="basic-url">State</label>
+            <label for="basic-url">*State</label>
             <div class="dropdown">
                 <div ngbDropdown class="d-inline-block">
                     <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
                         {{ addressEntry.state || 'State'}}
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1" class="">
-                        <button *ngFor="let state of stateList" class="dropdown-item" (click)="getState(state['abbreviation'])">{{ state['abbreviation'] }}</button>
+                        <button *ngFor="let state of stateList" class="dropdown-item" (click)="getState(state['abbreviation'])">{{
+                            state['abbreviation'] }}</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="form-input mr-5">
-            <label for="basic-url">Address 2</label>
+            <label for="basic-url">*ZIP</label>
             <div class="input-group mb-3">
-                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                <input type="text" [(ngModel)]="addressEntry.zip5" class="form-control" id="basic-url" aria-describedby="basic-addon3">
             </div>
         </div>
     </div>
+</div>
+<div class="modal-footer d-flex justify-content-end">
+    <button type="button" class="btn btn-outline-dark mr-5" (click)="close()">Cancel</button>
+    <button type="button" class="btn btn-outline-dark mr-5" (click)="submit()">Submit</button>
 </div>

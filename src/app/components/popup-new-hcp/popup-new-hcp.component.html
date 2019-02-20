@@ -1,12 +1,9 @@
 <div class="modal-header">
-    <h4 class="modal-title">New Search</h4>
+    <h4 class="modal-title">Add HCP</h4>
     <button type="button" class="close" aria-label="Close" (click)="close()">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<div class="modal-body">
-    <app-new-hcp></app-new-hcp>
-</div>
-<div class="modal-footer d-flex justify-content-center">
-    <button type="button" class="btn btn-outline-dark" (click)="close()">Close</button>
-</div>
+<app-new-hcp (formStatus)="getFormStatus($event)" *ngIf="showNow === 'form'"></app-new-hcp>
+<app-address-validation [(formStatus)]="formSpecs" (formStatusBack)="goBackToForm($event)" *ngIf="showNow === 'validation'"></app-address-validation>
+<!-- <app-address-validation [(formStatus)]="formSpecs" (formStatusBack)="goBackToForm($event)" *ngIf="showNow === 'confirmation'"></app-address-validation> -->
