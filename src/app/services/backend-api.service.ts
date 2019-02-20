@@ -51,5 +51,19 @@ export class BackendApiService {
                 map(resp => resp)
             );
     }
+
+    addHcpReq(hcpEntry) {
+        console.log(hcpEntry);
+        return this.http.post<any>(environment.apiEndpoint + '/hcp', hcpEntry).pipe(
+            map(resp => resp)
+        );
+    }
+
+    addLocationReq(addressEntry) {
+        console.log(addressEntry);
+        return this.http.post<any>(environment.apiEndpoint + '/location', addressEntry).pipe(
+            map(resp => resp)
+        );
+    }
 }
 

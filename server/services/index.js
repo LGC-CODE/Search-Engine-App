@@ -3,6 +3,8 @@ const getRecords = require('./get-records/get-records.service.js');
 const searchRecords = require('./search-records/search-records.service.js');
 const geolocation = require('./geolocation/geolocation.service.js');
 const filters = require('./filters/filters.service.js');
+const hcp = require('./hcp/hcp.service.js');
+const location = require('./location/location.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(results);
@@ -10,4 +12,6 @@ module.exports = function (app) {
   app.configure(searchRecords);
   app.configure(geolocation);
   app.configure(filters);
+  app.configure(hcp);
+  app.configure(location);
 };

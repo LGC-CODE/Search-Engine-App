@@ -36,6 +36,7 @@ import { PopupSearchComponent } from './components/popup-search/popup-search.com
 import { PopupNewHcpComponent } from './components/popup-new-hcp/popup-new-hcp.component';
 import { NewHcpComponent } from './components/new-hcp/new-hcp.component';
 import { AddressValidationComponent } from './components/address-validation/address-validation.component';
+import { HcpConfirmationComponent } from './components/hcp-confirmation/hcp-confirmation.component';
 
 @NgModule({
     declarations: [
@@ -57,7 +58,8 @@ import { AddressValidationComponent } from './components/address-validation/addr
         PopupSearchComponent,
         PopupNewHcpComponent,
         NewHcpComponent,
-        AddressValidationComponent
+        AddressValidationComponent,
+        HcpConfirmationComponent
     ],
     imports: [
         BrowserModule,

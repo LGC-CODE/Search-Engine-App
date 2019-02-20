@@ -1,4 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {HcpService} from '../../services/hcp.service';
+import {BackendApiService} from '../../services/backend-api.service';
 
 @Component({
     selector: 'app-address-validation',
@@ -7,18 +9,38 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class AddressValidationComponent implements OnInit {
 
-    @Input() formStatus;
-    @Output() formStatusBack = new EventEmitter<any>();
+    public entries;
 
-    constructor() {}
+    constructor(private hcpService: HcpService, private backendApi: BackendApiService) {
+        this.hcpService.currentEntries.subscribe(
+            entries => {
+                this.entries = entries;
+            }
+        );
+    }
 
     ngOnInit() {
-        console.log(this.formStatus);
+        console.log(this.entries);
     }
 
     goBack() {
-        this.formStatus.status = '';
-        this.formStatusBack.next('form');
+        this.entries.showNow = 'form';
+        this.hcpService.currentEntries.next(this.entries);
+    }
+
+    submit() {
+        this.backendApi.addHcpReq(this.entries.hcpEntry).subscribe(
+            resp => {
+                console.log(resp);
+            }
+        );
+        this.entries.showNow = 'confirmation';
+        this.hcpService.currentEntries.next(this.entries);
+        // this.backendApi.addLocationReq(this.entries.addressEntry).subscribe(
+        //     resp => {
+        //         console.log(resp);
+        //     }
+        // );
     }
 
 }

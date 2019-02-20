@@ -4,6 +4,6 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-<app-new-hcp (formStatus)="getFormStatus($event)" *ngIf="showNow === 'form'"></app-new-hcp>
-<app-address-validation [(formStatus)]="formSpecs" (formStatusBack)="goBackToForm($event)" *ngIf="showNow === 'validation'"></app-address-validation>
-<!-- <app-address-validation [(formStatus)]="formSpecs" (formStatusBack)="goBackToForm($event)" *ngIf="showNow === 'confirmation'"></app-address-validation> -->
+<app-new-hcp *ngIf="entries.showNow === 'form'"></app-new-hcp>
+<app-address-validation *ngIf="entries.showNow === 'validation'"></app-address-validation>
+<app-hcp-confirmation *ngIf="entries.showNow === 'confirmation'"></app-hcp-confirmation>

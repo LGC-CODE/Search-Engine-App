@@ -39,7 +39,8 @@ export class NavigationComponent implements OnInit {
     toggleHcp() {
         this.searchService.isHcpOpen.next(true);
         /* tslint:disable */
-        const modalRef = this.modalService.open(PopupNewHcpComponent, {size: 'xl'});
+        // eslint-disable-line 
+        const modalRef = this.modalService.open(PopupNewHcpComponent, {size: 'xl' as any});
     }
 
 }

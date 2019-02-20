@@ -1,4 +1,5 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {HcpService} from '../../services/hcp.service';
 
 @Component({
     selector: 'app-new-hcp',
@@ -7,10 +8,12 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 })
 export class NewHcpComponent implements OnInit {
     private location_id = Math.floor(Math.random() * 10000000000);
+    private prof_id = Math.floor(Math.random() * 10000000000);
+    private req_id = Math.floor(Math.random() * 10000000000);
     @Output() formStatus = new EventEmitter<any>();
 
     public hcpEntry = {
-        prof_id: '',
+        prof_id: this.prof_id,
         status: '',
         first_name: '',
         middle_name: '',
@@ -27,7 +30,8 @@ export class NewHcpComponent implements OnInit {
         email: '',
         website: '',
         mobile: '',
-        add_reason: ''
+        add_reason: '',
+        req_id: this.req_id
     };
 
     public addressEntry = {
@@ -45,6 +49,8 @@ export class NewHcpComponent implements OnInit {
         last_addr_latitude: '',
         last_addr_longitude: '',
     };
+
+    public entries;
 
     public stateList = [
         {
@@ -285,7 +291,18 @@ export class NewHcpComponent implements OnInit {
         }
     ];
 
-    constructor() {}
+    constructor(private hcpService: HcpService) {
+        this.hcpService.currentEntries.subscribe(
+            entries => {
+                console.log(entries);
+                if (entries.addressEntry || entries.hcpEntry) {
+                    this.entries = entries;
+                    this.addressEntry = this.entries.addressEntry;
+                    this.hcpEntry = this.entries.hcpEntry;
+                }
+            }
+        );
+    }
 
     ngOnInit() {
         console.log(this.hcpEntry.suffix);
@@ -320,11 +337,14 @@ export class NewHcpComponent implements OnInit {
         console.log(this.addressEntry);
         console.log(this.hcpEntry);
 
-        this.formStatus.next({
+        this.entries = {
             hcpEntry: this.hcpEntry,
             addressEntry: this.addressEntry,
-            status: 'complete'
-        });
+            status: 'complete',
+            showNow: 'validation'
+        };
+
+        this.hcpService.currentEntries.next(this.entries);
     }
 
 }
