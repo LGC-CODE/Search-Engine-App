@@ -1,0 +1,8 @@
+:host {
+    .dropdown-menu {
+        &.show {
+            overflow-y: scroll;
+            height: 210px;
+        }
+    }
+}
