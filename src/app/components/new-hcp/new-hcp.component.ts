@@ -1,5 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {HcpService} from '../../services/hcp.service';
+import {SearchService} from '../../services/search.service';
 
 @Component({
     selector: 'app-new-hcp',
@@ -291,7 +292,7 @@ export class NewHcpComponent implements OnInit {
         }
     ];
 
-    constructor(private hcpService: HcpService) {
+    constructor(private hcpService: HcpService, private searchService: SearchService) {
         this.hcpService.currentEntries.subscribe(
             entries => {
                 console.log(entries);
@@ -345,6 +346,10 @@ export class NewHcpComponent implements OnInit {
         };
 
         this.hcpService.currentEntries.next(this.entries);
+    }
+
+    close() {
+        this.searchService.isHcpOpen.next(false);
     }
 
 }

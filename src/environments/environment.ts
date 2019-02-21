@@ -4,11 +4,11 @@
 
 export const environment = {
     production: false,
-    apiEndpoint: 'https://localhost:3030',
+    apiEndpoint: 'https://172.27.6.121:3030',
     okta: {
         clientId: '0oajcymqn9CrPFLSd0h7',
         issuer: 'https://dev-298781.oktapreview.com/oauth2/default',
-        redirectUri: 'http://localhost:4200/implicit/callback',
+        redirectUri: `http://${window.location.host}/implicit/callback`,
         scope: 'openid profile email'
     }
 };

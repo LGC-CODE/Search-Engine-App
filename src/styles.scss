@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'variables';
+
 $ionicons-font-path: '~ionicons/dist/fonts';
 @import '~ionicons/dist/scss/ionicons.scss';
 @import 'bootstrap/scss/bootstrap.scss';

@@ -1,3 +1,5 @@
+@import 'variables';
+
 :host {
     agm-map {
         position: absolute;
@@ -10,6 +12,6 @@
         right: 35px;
         top: 200px;
         padding: 10px;
-        background: #007bff;
+        background: $blue;
     }
 }

@@ -1,3 +1,5 @@
+@import 'variables';
+
 .search {
     .search-bar {
         position: relative;
@@ -23,7 +25,7 @@
             input[type=text] {
                 height: 50px;
                 border: none;
-                border-bottom: 11px solid #007bff;
+                border-bottom: 11px solid $blue;
                 font-size: 25px;
 
                 &:focus {

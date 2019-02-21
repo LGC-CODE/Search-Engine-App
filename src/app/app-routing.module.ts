@@ -9,6 +9,7 @@ import {CardsComponent} from './views/results/cards/cards.component';
 import {LoginComponent} from './views/auth/login/login.component';
 import {AuthComponent} from './views/auth/auth.component';
 import { OktaAuthGuard, OktaCallbackComponent } from '@okta/okta-angular';
+import {ViewComponent} from './views/hcp/view/view.component';
 
 export function onAuthRequired({oktaAuth, router}) {
     router.navigate(['/login']);
@@ -32,6 +33,9 @@ const routes: Routes = [
             {path: '', redirectTo: 'login', pathMatch: 'full'},
             {path: 'login', component: LoginComponent}
         ]
+    },
+    {
+        path: 'full-hcp', component: ViewComponent, // view full hcp
     },
     {
         path: 'implicit/callback',
