@@ -4,20 +4,20 @@
             <th scope="col">
                 <div class="form-check">
 					<label>
-						<input type="checkbox" name="check" checked>
+						<input type="checkbox" name="check">
 					</label>
 				</div>
             </th>
             <th scope="col">Prof ID#</th>
-            <th scope="col">NPI#</th>
+            <th scope="col">CRM</th>
+            <th scope="col">Spend</th>
             <th scope="col">First Name</th>
             <th scope="col">Middle Name</th>
             <th scope="col">Last Name</th>
             <th scope="col">Address</th>
             <th scope="col">City</th>
             <th scope="col">ZIP</th>
-            <th scope="col">CRM</th>
-            <th scope="col">Spend</th>
+            <th scope="col">More</th>
         </tr>
     </thead>
     <tbody>
@@ -25,20 +25,20 @@
             <th scope="row">
                 <div class="form-check">
 					<label>
-						<input type="checkbox" name="check" checked>
+						<input type="checkbox" name="check">
 					</label>
 				</div>
             </th>
-            <td>{{ professional.profId }}</td>
-            <td>{{ professional.npi }}</td>
+            <td>{{ professional.prof_id }}</td>
+            <td class="text-center"><i class="icon ion-md-checkmark-circle" [style.color]="professional.ctms_flag ? 'lightgreen': 'red'"></i></td>
+            <td class="text-center"><i class="icon ion-md-checkmark-circle" [style.color]="professional.aggspend_status === 'ACTIVE' ? 'lightgreen': 'red'"></i></td>
             <td>{{ professional.first_name }}</td>
             <td>{{ professional.middle_name }}</td>
             <td>{{ professional.last_name }}</td>
             <td>{{ professional.address1 }}</td>
             <td>{{ professional.city }}</td>
             <td>{{ professional.zip5 }}</td>
-            <td>{{ professional.crm }}</td>
-            <td>{{ professional.spend }}</td>
+            <td><i class="icon ion-ios-more"></i></td>
         </tr>
     </tbody>
 </table>

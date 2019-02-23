@@ -6,6 +6,6 @@
     "default": 10,
     "max": 50
   },
-  "mysql": "mysql://root:Gokussj6@127.0.0.1:3306/mdm_portal_exchange",
+  "mysql": "mysql://ust00jj9dw3ecpno:e64gpbdhuz834eh4@gp96xszpzlqupw4k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/tntvtlrgnfjxo46e",
   "nedb": "../data"
 }

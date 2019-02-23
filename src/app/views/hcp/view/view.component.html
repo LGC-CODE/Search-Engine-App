@@ -1,20 +1,26 @@
 <app-navigation></app-navigation>
 <div class="hcp-details-wrap">
     <div class="control-bar d-flex justify-content-between flex-row">
-        <div class="left-controls d-flex flex-row">
-            <div class="back-btn">
-                <i class="icon ion-md-arrow-back"></i>
-                Back to Search Results
+        <div class="left-controls d-flex flex-row mb-3">
+            <div class="back-btn mr-5 btn btn-light text-primary">
+                <b>
+                    <i class="icon ion-md-arrow-back"></i>
+                    Back to Search Results
+                </b>
             </div>
-            <div class="edit-btn">
-                <i class="icon ion-ios-create"></i>
-                Click to Edit
+            <div class="back-btn mr-5 btn btn-light text-dark">
+                <b>
+                    <i class="icon ion-md-create"></i>
+                    Click to Edit
+                </b>
             </div>
         </div>
         <div class="right-controls">
-            <div class="share-btn">
-                <i class="icon ion-md-share"></i>
-                Smart Share
+            <div class="share-btn btn btn-light text-dark">
+                <b>
+                    <i class="icon ion-md-share"></i>
+                    Smart Share
+                </b>
             </div>
         </div>
     </div>
@@ -79,11 +85,11 @@
         <div class="col-md-9 d-flex flex-column hcp-details-right">
             <div class="hcp-details-top">
                 <div class="hcp-btn-labels d-flex flex-row">
-                    <div class="hcp-btn-label btn btn-block btn-light mx-1"><u class="text-primary">HCP Details</u></div>
-                    <div class="hcp-btn-label btn btn-block btn-primary mx-1">Alignment</div>
-                    <div class="hcp-btn-label btn btn-block btn-primary mx-1">State License</div>
-                    <div class="hcp-btn-label btn btn-block btn-primary mx-1">Change Requests</div>
-                    <div class="hcp-btn-label btn btn-block btn-primary mx-1">Address History</div>
+                    <div class="hcp-btn-label btn btn-lg btn-light mx-1"><u class="text-primary">HCP Details</u></div>
+                    <div class="hcp-btn-label btn btn-lg btn-primary mx-1">Alignment</div>
+                    <div class="hcp-btn-label btn btn-lg btn-primary mx-1">State License</div>
+                    <div class="hcp-btn-label btn btn-lg btn-primary mx-1">Change Requests</div>
+                    <div class="hcp-btn-label btn btn-lg btn-primary mx-1">Address History</div>
                 </div>
             </div>
             <div class="hcp-details-bottom">
@@ -169,47 +175,78 @@
                         </div>
                     </div>
                 </div>
+                <hr>
                 <div class="hcp-details-3">
                     <label><small>Addresses</small></label>
-                    <table class="table table-light">
+                    <table class="table table-bordered table-sm">
                         <thead class="thead-light">
                             <tr>
-                                <th>Address 1</th>
-                                <th>Address 2</th>
-                                <th>City</th>
-                                <th>State</th>
-                                <th>ZIP</th>
-                                <th>Best Loc</th>
-                                <th>HEM <small>Address Type</small></th>
-                                <th>MSL <small>Address Type</small></th>
-                                <th>ONE <small>Address Type</small></th>
-                                <th>HEM <small>Territory</small></th>
-                                <th>MSL <small>Territory</small></th>
-                                <th>ONE <small>Territory</small></th>
+                                <th scope="col" colspan="1">Address 1</th>
+                                <th scope="col" colspan="1">Address 2</th>
+                                <th scope="col" colspan=1>City</th>
+                                <th scope="col" colspan=1>State</th>
+                                <th scope="col" colspan=1>ZIP</th>
+                                <th scope="col" colspan=1>Best Loc</th>
+                                <th scope="col" colspan=1>HEM<br><small>Type</small></th>
+                                <th scope="col" colspan=1>MSL<br><small>Type</small></th>
+                                <th scope="col" colspan=1>ONE<br><small>Type</small></th>
+                                <th scope="col" colspan=1>HEM<br><small>Territory</small></th>
+                                <th scope="col" colspan=1>MSL<br><small>Territory</small></th>
+                                <th scope="col" colspan=1>ONE<br><small>Territory</small></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td colspan="1">230 N BROAD ST</td>
+                                <td colspan="1">{{ '23404 N VIRGINIA ST' }}</td>
+                                <td colspan="1">PHILADELPHIA</td>
+                                <td colspan="1">PA</td>
+                                <td colspan="1">19102</td>
+                                <td colspan="1">N</td>
+                                <td colspan="1">Primary</td>
+                                <td colspan="1">Primary</td>
+                                <td colspan="1">Inactive</td>
+                                <td colspan="1">North Philadelphia</td>
+                                <td colspan="1">Eastern PA</td>
+                                <td colspan="1">Northeast</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">230 N BROAD ST</td>
+                                <td colspan="1">{{ '23404 N VIRGINIA ST' }}</td>
+                                <td colspan="1">PHILADELPHIA</td>
+                                <td colspan="1">PA</td>
+                                <td colspan="1">19102</td>
+                                <td colspan="1">N</td>
+                                <td colspan="1">Primary</td>
+                                <td colspan="1">Primary</td>
+                                <td colspan="1">Inactive</td>
+                                <td colspan="1">North Philadelphia</td>
+                                <td colspan="1">Eastern PA</td>
+                                <td colspan="1">Northeast</td>
+                            </tr>
+                            <tr>
+                                <td colspan="1">230 N BROAD ST</td>
+                                <td colspan="1">{{ '23404 N VIRGINIA ST' }}</td>
+                                <td colspan="1">PHILADELPHIA</td>
+                                <td colspan="1">PA</td>
+                                <td colspan="1">19102</td>
+                                <td colspan="1">N</td>
+                                <td colspan="1">Primary</td>
+                                <td colspan="1">Primary</td>
+                                <td colspan="1">Inactive</td>
+                                <td colspan="1">North Philadelphia</td>
+                                <td colspan="1">Eastern PA</td>
+                                <td colspan="1">Northeast</td>
                             </tr>
                         </tbody>
                     </table>
+                    <div class="btn btn-block btn-light text-primary w-25"><strong><i class="icon ion-md-add"></i><u>Add
+                                Another Address ></u></strong></div>
                 </div>
             </div>
             <div class="footer-btns">
                 <div class="buttons d-flex justify-content-center flex-row">
-                    <div class="save-btn btn btn-block">
+                    <div class="save-btn btn btn-lg btn-secondary">
                         Save
                     </div>
                 </div>

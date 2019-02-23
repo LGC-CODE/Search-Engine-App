@@ -27,7 +27,7 @@ class Service {
     // console.log(concatinatedSearchQuery);
 
     const masterQuery =
-      `select first_name, middle_name, last_name, best_loc, loc_id, address1, city, state, zip5, last_addr_latitude, last_addr_longitude` +
+      `select first_name, middle_name, last_name, best_loc, loc_id, address1, city, state, zip5, last_addr_latitude, last_addr_longitude, ctms_flag, aggspend_status, prof_id ` +
 
       (params.query.lat ? `${geolocationFormula} as distance` : '') + // geolocation query
 

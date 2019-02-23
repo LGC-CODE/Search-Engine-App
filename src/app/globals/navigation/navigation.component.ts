@@ -3,6 +3,7 @@ import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {PopupSearchComponent} from '../../components/popup-search/popup-search.component';
 import {SearchService} from '../../services/search.service';
 import {PopupNewHcpComponent} from '../../components/popup-new-hcp/popup-new-hcp.component';
+import {AppConfigService} from '../../services/app-config.service';
 
 @Component({
     selector: 'app-navigation',
@@ -13,7 +14,9 @@ export class NavigationComponent implements OnInit {
     public searchBarActive;
     public hcpActive;
 
-    constructor(private modalService: NgbModal, private searchService: SearchService) {
+    public menuItems;
+
+    constructor(private modalService: NgbModal, private searchService: SearchService, private appConfigService: AppConfigService) {
         this.searchService.isModalOpen.subscribe(
             isOpen => {
                 this.searchBarActive = isOpen;
@@ -25,6 +28,12 @@ export class NavigationComponent implements OnInit {
                 this.hcpActive = isOpen;
             }
         );
+
+        this.appConfigService.toggleMenuItems.subscribe(
+            menu => {
+                this.menuItems = menu;
+            }
+        );
     }
 
     ngOnInit() {
@@ -32,7 +41,7 @@ export class NavigationComponent implements OnInit {
 
     toggleSearchBar() {
         this.searchService.isModalOpen.next(true);
-        const modalRef = this.modalService.open(PopupSearchComponent, {size: 'lg'});
+        const modalRef = this.modalService.open(PopupSearchComponent, {size: 'xl' as any});
         // modalRef.componentInstance.name = 'World';
     }
 

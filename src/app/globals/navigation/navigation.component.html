@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-between flex-row bg-primary navbar-wrap">
-    <div class="align-self-center left-content">
+    <div class="align-self-center left-content" [hidden]="!menuItems.user">
         <div class="user d-flex justify-content-center flex-column align-items-center">
             <p>JEFF MILLER</p>
             <i class="icon ion-md-person"></i>
@@ -8,13 +8,15 @@
     </div>
     <div class="align-self-center center-content">
         <div class="icons d-flex justify-content-center flex-row">
-            <div class="btn" [ngClass]="searchBarActive ? 'btn-light': 'btn-primary'" (click)="toggleSearchBar()">
+            <div class="btn" [hidden]="!menuItems.newSearch" [ngClass]="searchBarActive ? 'btn-light': 'btn-primary'" 
+                (click)="toggleSearchBar()">
                 <div class="d-flex justify-content-center flex-column px-3">
                     <i class="icon ion-md-search"></i>
                     New Search
                 </div>
             </div>
-            <div class="btn" [ngClass]="hcpActive ? 'btn-light': 'btn-primary'" (click)="toggleHcp()">
+            <div class="btn" [hidden]="!menuItems.addHcp" [ngClass]="hcpActive ? 'btn-light': 'btn-primary'" 
+                 (click)="toggleHcp()">
                 <div class="d-flex justify-content-center flex-column px-3">
                 <i class="icon ion-md-person"></i>
                     Add HCP

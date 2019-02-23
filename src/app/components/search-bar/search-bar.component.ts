@@ -17,7 +17,7 @@ export class SearchBarComponent implements OnInit {
     filteredUsers: Array<any> = [];
     usersForm: FormGroup;
     isLoading = false;
-    displayedColumns = ['name', 'address', 'city'];
+    displayedColumns = ['name', 'last_name', 'address', 'city', 'state'];
     private searchQuery;
 
     constructor(

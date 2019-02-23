@@ -19,7 +19,12 @@
                                     {{opt.first_name}}
                                 </mat-cell>
                             </ng-container>
-
+                            <ng-container matColumnDef="last_name">
+                                <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+                                <mat-cell *matCellDef="let opt">
+                                    {{opt.last_name}}
+                                </mat-cell>
+                            </ng-container>
                             <ng-container matColumnDef="address">
                                 <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
                                 <mat-cell *matCellDef="let opt">
@@ -32,6 +37,12 @@
                                     {{opt.city}}
                                 </mat-cell>
                             </ng-container>
+                            <ng-container matColumnDef="state">
+                                <mat-header-cell *matHeaderCellDef>State</mat-header-cell>
+                                <mat-cell *matCellDef="let opt">
+                                    {{opt.state}}
+                                </mat-cell>
+                            </ng-container>
                             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                             <mat-option *matRowDef="let opt; columns: displayedColumns" [value]="opt">
                                 <mat-row></mat-row>
@@ -42,7 +53,10 @@
             </mat-form-field>
         </form>
     </div>
-    <div class="search-tags">
-        By: Name, Location
+    <div class="search-tags d-flex justify-content-between">
+        <div>By: Name, Location</div>
+        <div class="text-primary">
+            <u>Advanced Search</u>
+        </div>
     </div>
 </div>
