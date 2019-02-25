@@ -12,7 +12,16 @@ export class LoginComponent implements OnInit {
     public signIn;
     public isAuthenticated;
     public widget = new OktaSignIn({
-        baseUrl: 'https://dev-298781.oktapreview.com'
+        baseUrl: 'https://dev-298781.oktapreview.com',
+        logo: '/assets/welcome/incyte_logo.png',
+        helpLinks: {
+            custom: [
+                {
+                    text: 'Single Sign-On is enabled',
+                    href: '#'
+                }
+            ]
+        }
     });
 
     constructor(public oktaAuth: OktaAuthService, public router: Router) {

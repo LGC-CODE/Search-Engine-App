@@ -7,7 +7,7 @@
     .logo {
         padding: 4% 0;
         img {
-            width: 70%;
+            width: 55%;
             display: block;
             margin: 0 auto;
         }
@@ -18,5 +18,9 @@
                 font-size: 9px;
             }
         }
+    }
+
+    .login-wrap {
+        text-align: center;
     }
 }
