@@ -21,6 +21,12 @@ export class PaginationBarComponent implements OnInit {
             }
         );
 
+        this.route.queryParams.subscribe(
+            params => {
+                this.currentPage = params.page;
+            }
+        );
+
         this.currentPage = this.route.snapshot.queryParams.page || 1;
         this.setPage();
     }

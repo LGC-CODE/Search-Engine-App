@@ -35,7 +35,7 @@ export class FiltersComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.currentRoute = this.route.snapshot.url.join('').split('?')[0];
+        this.currentRoute = this.router.url.split('?')[0];
     }
 
     closeFilterModal() {
