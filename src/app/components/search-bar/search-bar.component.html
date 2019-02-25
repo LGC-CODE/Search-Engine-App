@@ -4,10 +4,10 @@
             <mat-form-field class="search-input">
                 <input placeholder="Find HCP's..." type="text" 
                        matInput [matAutocomplete]="auto" formControlName='userInput'>
-                <div class="search-btn btn btn-primary btn-lg" (click)="optionSelect()">
+                <div class="search-btn btn btn-primary btn-lg" (click)="searchSelect()">
                     <i class="icon ion-md-search"></i>
                 </div>
-                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='optionSelect()'>
+                <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)='optionSelect($event)'>
                     <mat-option *ngIf="isLoading" class="is-loading">
                         <mat-spinner diameter="50"></mat-spinner>
                     </mat-option>

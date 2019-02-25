@@ -17,12 +17,12 @@ class Service {
     console.log(concatinatedSearchQuery);
 
     return this.sequelClient.query(`
-        select first_name, middle_name, last_name, best_loc, loc_id, address1, city, state, zip5
+        select first_name, middle_name, last_name, best_loc, loc_id, address1, city, state, zip5, prof_id
         from zmdmp_profs
         inner join zmdmp_locs
         on zmdmp_profs.best_loc = zmdmp_locs.loc_id`
         +` where ` + 
-        `concat(first_name, ' ', last_name, ' ', address1, ' ', city, ' ', state, ' ', zip5) like '%${paramsArray[0]}%${concatinatedSearchQuery}' ` +
+        `concat(first_name, ' ', last_name, ' ', address1, ' ', city, ' ', state, ' ', zip5, ' ', prof_id) like '%${paramsArray[0]}%${concatinatedSearchQuery}' ` +
         `limit 20;`
     , {
       raw: true

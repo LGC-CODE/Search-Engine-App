@@ -51,9 +51,18 @@ export class SearchBarComponent implements OnInit {
         if (user) { return user.name; }
     }
 
-    optionSelect() {
+    searchSelect($event) {
         this.searchService.isModalOpen.next(false);
         this.routers.navigate(['results/list'], {queryParams: {query: this.searchQuery ? this.searchQuery : '', page: 1, limit: 20}});
+        this.filtersService.filterModalSpecs.next({});
+    }
+
+    optionSelect($event) {
+        console.log($event.option.value);
+        this.searchService.isModalOpen.next(false);
+        this.routers.navigate(['results/list'], {
+            queryParams: {query: false && this.searchQuery ? this.searchQuery : $event.option.value.prof_id, page: 1, limit: 20}
+        });
         this.filtersService.filterModalSpecs.next({});
     }
 }

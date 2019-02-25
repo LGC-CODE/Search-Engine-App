@@ -37,7 +37,7 @@ class Service {
       
       (params.query.lat ? selectQuery : '') + // geolocation results query
       
-      ' and concat(first_name, " ", last_name, " ", address1, " ", city, " ", state, " ", zip5) ' +
+      ' and concat(first_name, " ", last_name, " ", address1, " ", city, " ", state, " ", zip5, " ", prof_id) ' +
        
       
       `like '%${paramsArray[0]}%${concatinatedSearchQuery}'` + // search query
