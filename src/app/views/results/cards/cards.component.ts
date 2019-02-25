@@ -42,14 +42,20 @@ export class CardsComponent implements OnInit {
     applyFilters() {
         this.route.queryParams.subscribe(
             params => {
-                console.log(params);
-                const activeQuery = this.router.url.split('?')[1];
-                this.backendApi.generateFilteredResults(activeQuery).toPromise().then(
-                    resp => {
-                        console.log(resp);
-                        this.searchResults = resp[0];
-                    }
-                );
+                    console.log(params);
+                    console.log(this.router.url);
+                    const activeQuery = this.router.url.split('?')[1];
+                    this.backendApi.generateFilteredResults(activeQuery).toPromise().then(
+                        resp => {
+                            console.log(resp);
+                            if (resp[0].length < 20) {
+                                this.paginationService.paginationPossible.next(false);
+                            } else {
+                                this.paginationService.paginationPossible.next(true);
+                            }
+                            this.searchResults = resp[0];
+                        }
+                    );
             }
         );
     }

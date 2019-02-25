@@ -1,8 +1,15 @@
-<div class="title">
-    <h1>
-        <i class="icon ion-md-mail"></i>
-        Notifications/Alerts
-    </h1>
+<div class="title row">
+    <div class="col-md-6 text-left">
+        <p>
+            <i class="icon ion-md-mail"></i>
+            Notifications
+        </p>
+    </div>
+    <div class="col-md-6 text-right text-primary d-flex justify-content-end flex-column">
+        <p>
+            <u>View All ></u>
+        </p>
+    </div>
 </div>
 <div class="list-group align-self-start">
     <div class="list-group-item list-group-item-action" [ngClass]="{'active': idx === 0}" *ngFor="let item of [1,2,3,4,5]; let idx = index" >
@@ -10,7 +17,7 @@
             <h5 class="mb-1">HCP Renewal Alert</h5>
             <small>3 days ago</small>
         </div>
-        <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <div class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</div>
         <!-- <small>John Stewart</small> -->
     </div>
 </div>

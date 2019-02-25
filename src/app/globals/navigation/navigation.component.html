@@ -1,34 +1,66 @@
-<div class="d-flex justify-content-between flex-row bg-primary navbar-wrap">
-    <div class="align-self-center left-content" [hidden]="!menuItems.user">
-        <div class="user d-flex justify-content-center flex-column align-items-center">
-            <p>JEFF MILLER</p>
-            <i class="icon ion-md-person"></i>
-            <p>State: CA</p>
-        </div>
-    </div>
-    <div class="align-self-center center-content">
-        <div class="icons d-flex justify-content-center flex-row">
-            <div class="btn" [hidden]="!menuItems.newSearch" [ngClass]="searchBarActive ? 'btn-light': 'btn-primary'" 
-                (click)="toggleSearchBar()">
-                <div class="d-flex justify-content-center flex-column px-3">
-                    <i class="icon ion-md-search"></i>
-                    New Search
-                </div>
-            </div>
-            <div class="btn" [hidden]="!menuItems.addHcp" [ngClass]="hcpActive ? 'btn-light': 'btn-primary'" 
-                 (click)="toggleHcp()">
-                <div class="d-flex justify-content-center flex-column px-3">
+<div [hidden]="smNavBarShow">
+    <div class="d-flex justify-content-between flex-row bg-primary navbar-wrap">
+        <div class="align-self-center left-content d-flex flex-row" [hidden]="!menuItems.user">
+            <div class="user mr-4 d-flex justify-content-center flex-column align-items-center">
+                <p>JEFF MILLER</p>
                 <i class="icon ion-md-person"></i>
-                    Add HCP
+                <p>State: CA</p>
+            </div>
+            <div class="user mr-4 d-flex justify-content-center flex-column align-items-center" [routerLink]="[ '/home' ]">
+                <i class="icon ion-md-home"></i>
+            </div>
+            <div class="user mr-4 d-flex justify-content-center flex-column align-items-center">
+                <i class="icon ion-md-chatboxes"></i>
+                <span>1</span>
+            </div>
+            <div class="user mr-4 d-flex justify-content-center flex-column align-items-center">
+                <i class="icon ion-ios-notifications"></i>
+                <span>3</span>
+            </div>
+        </div>
+        <div class="align-self-center center-content">
+            <div class="icons d-flex justify-content-center flex-row">
+                <div class="btn" [hidden]="!menuItems.newSearch" [ngClass]="searchBarActive ? 'btn-light': 'btn-primary'"
+                    (click)="toggleSearchBar()">
+                    <div class="d-flex justify-content-center flex-column px-3">
+                        <i class="icon ion-md-search"></i>
+                        New Search
+                    </div>
+                </div>
+                <div class="btn" [hidden]="!menuItems.addHcp" [ngClass]="hcpActive ? 'btn-light': 'btn-primary'" (click)="toggleHcp()">
+                    <div class="d-flex justify-content-center flex-column px-3">
+                        <i class="icon ion-md-person"></i>
+                        Add HCP
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="align-self-center right-content">
-        <div class="icons d-flex justify-content-center flex-row">
-            <i class="icon ion-md-information-circle-outline"></i>
-            <i class="icon ion-md-cog"></i>
-            <i class="icon ion-ios-more"></i>
+        <div class="align-self-center right-content">
+            <div class="icons d-flex justify-content-center flex-row">
+                <i class="icon ion-md-information-circle-outline"></i>
+                <i class="icon ion-md-cog"></i>
+                <i class="icon ion-ios-more"></i>
+            </div>
         </div>
     </div>
 </div>
+<nav class="navbar navbar-expand-lg navbar-primary" [hidden]="!smNavBarShow">
+    <a class="navbar-brand" href="#">Incyte</a>
+    <button type="button" class="btn btn-outline-primary" (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+        aria-controls="collapseExample">
+        <span class="icon ion-md-menu"></span>
+    </button>
+    <div id="collapseExample" class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
+        <ul class="navbar-nav text-primary">
+            <li class="nav-item">
+                <div class="nav-link" [routerLink]="[ '/home' ]">Home</div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link" (click)="toggleSearchBar()">New Search</div>
+            </li>
+            <li class="nav-item">
+                <div class="nav-link" (click)="toggleHcp()">Add HCP</div>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,7 +1,7 @@
 <div class="list-wrapper bg-secondary text-white px-3">
     <div class="list-filters row d-flex justify-content-between">
         <div class="left-content col-md-6 col-lg-6">
-            <div class="d-flex justify-content-start flex-row">
+            <div class="d-flex justify-content-sm-start justify-content-center flex-row">
                 <div class="filter-actions d-flex flex-row">
                     <div (click)="openFilters()" class="action p-2 d-flex justify-content-center flex-column">
                         <div class="icon align-self-center">
@@ -11,13 +11,21 @@
                             {{ openFilter ? 'Close Filters' : 'Filters'}}
                         </div>
                     </div>
+                    <div (click)="openMore()" *ngIf="smFiltersShow" class="action p-2 d-flex justify-content-center flex-column">
+                        <div class="icon align-self-center">
+                            <i class="icon" [ngClass]="smFiltersToggle ? 'ion-md-close': 'ion-md-funnel'"></i>
+                        </div>
+                        <div class="option px-2 pb-2 align-self-center">
+                            {{ smFiltersToggle ? 'Close' : 'More'}}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="right-content col-md-6 col-lg-6">
-            <div class="d-flex justify-content-end flex-row">
-                <div class="filter-actions d-flex flex-row">
-                    <div class="action p-2 d-flex justify-content-center flex-column">
+            <div *ngIf="smFiltersToggle" class="d-flex justify-content-sm-end justify-content-center flex-row">
+                <div class="filter-actions d-flex flex-sm-row flex-column">
+                    <div class="action p-2 d-flex justify-content-center flex-sm-column">
                         <div ngbDropdown class="d-inline-block">
                             <button class="btn btn-outline-light" id="dropdownBasic1" ngbDropdownToggle>
                                 {{ sortByText }}
@@ -31,7 +39,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="action p-2 d-flex justify-content-center flex-column">
+                    <div class="action p-2 d-flex justify-content-center flex-sm-column">
                         <div ngbDropdown class="d-inline-block">
                             <button class="btn btn-outline-light" id="dropdownBasic1" ngbDropdownToggle>
                                 {{ currentView || 'Change View' }}
@@ -43,7 +51,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="action p-2 d-flex justify-content-center flex-column">
+                    <div class="action p-2 d-flex justify-content-center flex-sm-column">
                         <div class="icon align-self-center">
                             <i class="icon ion-md-download"></i>
                         </div>
@@ -51,7 +59,7 @@
                             Download
                         </div>
                     </div>
-                    <div class="action p-2 d-flex justify-content-center flex-column">
+                    <div class="action p-2 d-flex justify-content-center flex-sm-column">
                         <div class="icon align-self-center">
                             <i class="icon ion-ios-share"></i>
                         </div>
@@ -59,14 +67,14 @@
                             Send
                         </div>
                     </div>
-                    <div class="action p-2 d-flex justify-content-center flex-column">
+                    <!-- <div class="action p-2 d-flex justify-content-center flex-column">
                         <div class="icon align-self-center">
                             <i class="icon ion-md-map"></i>
                         </div>
                         <div class="option px-2 pb-2 align-self-center">
                             Map
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>

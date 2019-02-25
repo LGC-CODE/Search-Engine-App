@@ -35,7 +35,6 @@ export class FiltersComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.currentRoute = this.router.url.split('?')[0];
     }
 
     closeFilterModal() {
@@ -158,6 +157,7 @@ export class FiltersComponent implements OnInit {
     }
 
     navigateToResults(searchQuery) {
+        this.currentRoute = this.router.url.split('?')[0];
         console.log('navigating');
         this.router.navigate([this.currentRoute], {queryParams: searchQuery});
     }

@@ -10,6 +10,12 @@
         justify-content: center;
         align-items: center;
 
+        .title {
+            p {
+                font-size: 20px;
+            }
+        }
+
         .inner-content {
             padding: 5%;
             width: 100%;

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BackendApiService} from '../../../services/backend-api.service';
 import {debounceTime, tap, switchMap, finalize} from 'rxjs/operators';
@@ -10,10 +10,11 @@ import {PaginationService} from '../../../services/pagination.service';
     templateUrl: './list.component.html',
     styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnDestroy {
     searchResults: object;
     isLoading;
     openFilter;
+    private paramsSubscription;
 
     constructor(private route: ActivatedRoute, private backendApi: BackendApiService,
                 private filterService: FiltersService, private paginationService: PaginationService,
@@ -26,8 +27,11 @@ export class ListComponent implements OnInit {
         this.applyFilters();
     }
 
+    ngOnDestroy() {
+    }
+
     applyFilters() {
-        this.route.queryParams.subscribe(
+        this.paramsSubscription = this.route.queryParams.subscribe(
             params => {
                     console.log(params);
                     console.log(this.router.url);

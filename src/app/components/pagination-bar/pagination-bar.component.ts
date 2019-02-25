@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FiltersService} from '../../services/filters.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationService} from '../../services/pagination.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class PaginationBarComponent implements OnInit {
 
 
     constructor(private filterService: FiltersService, private route: ActivatedRoute,
-                private paginationService: PaginationService) {
+                private paginationService: PaginationService, private router: Router) {
         this.paginationService.paginationPossible.subscribe(
             nextPage => {
                 this.canNextPage = nextPage;
@@ -47,9 +47,11 @@ export class PaginationBarComponent implements OnInit {
     }
 
     setPage() {
+        const activeQuery = this.router.url.split('?')[0];
+        console.log(activeQuery);
         const params = this.route.snapshot.queryParams;
         const searchQuery = {...params, page: this.currentPage, limit: 20};
-        this.filterService.navigateToResults('results/list', searchQuery);
+        this.filterService.navigateToResults(activeQuery, searchQuery);
     }
 
 }

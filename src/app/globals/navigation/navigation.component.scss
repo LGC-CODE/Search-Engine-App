@@ -17,10 +17,22 @@
 
         .left-content {
             .user {
+                position: relative;
                 // display: flex;
                 // align-items: center;
                 // flex-direction: column;
-                 
+                
+                span {
+                    position: absolute;
+                    right: -10px;
+                    top: 20px;
+                    padding: 1px 5px;
+                    background: yellow;
+                    border-radius: 50%;
+                    font-size: 10px;
+                    color: black;
+                }
+
                 p {
                     font-size: 12px;
                 }

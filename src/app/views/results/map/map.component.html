@@ -1,5 +1,5 @@
 <agm-map [latitude]="mapDefaults.lat" [longitude]="mapDefaults.lng" [zoom]="zoom" 
-    [disableDefaultUI]="false" [zoomControl]="false" 
+    [disableDefaultUI]="false" [zoomControl]="true" 
     (mapClick)="mapClicked($event)" (centerChange)="centerChanged($event)"
     [zoomControl]="true" [styles]="styles">
 
@@ -10,8 +10,9 @@
         <agm-info-window>
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title" [innerHTML]="m.city"></h5>
-                    <p class="card-text">View More</p>
+                    <h5 class="card-title">{{ m.first_name + ' ' + m.last_name }}</h5>
+                    <p class="card-text">{{ m.city }} {{ m.state }} {{ m.zip5 }}</p>
+                    <p class="card-text" [routerLink]="[ '/full-hcp' ]">View More</p>
                 </div>
             </div>
         </agm-info-window>

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, HostListener} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
@@ -11,11 +11,35 @@ export class FilterBarComponent implements OnInit {
     public openFilter = false;
     public currentRoute: string;
     public currentView: string;
+    public smFiltersShow;
+    public smFiltersToggle;
+
+    @HostListener('window:resize', ['$event'])
+    onResize(event: any) {
+        if (event.target.innerWidth < 575) {
+            this.smFiltersShow = true;
+            this.smFiltersToggle = false; // hide extra filters on mobile
+        } else {
+            this.smFiltersShow = false;
+            this.smFiltersToggle = true;
+        }
+    }
 
     constructor(private route: ActivatedRoute, private router: Router) {
     }
 
     ngOnInit() {
+        if (window.innerWidth < 575) {
+            this.smFiltersShow = true;
+            this.smFiltersToggle = false; // hide extra filters on mobile
+        } else {
+            this.smFiltersShow = false;
+            this.smFiltersToggle = true;
+        }
+    }
+
+    openMore() {
+        this.smFiltersToggle = !this.smFiltersToggle;
     }
 
     sortBy(type: string, label: string) {
@@ -32,15 +56,20 @@ export class FilterBarComponent implements OnInit {
     }
 
     getView(type) {
+        let searchQuery;
         this.currentView = type;
+        console.log(type);
         this.route.queryParams.subscribe(
             params => {
                 // console.log(params, type);
-                const searchQuery = {...params};
+                searchQuery = {...params};
                 // console.log(searchQuery);
-                this.router.navigate([`/results/${type.toLowerCase()}`], {queryParams: searchQuery});
             }
         );
+
+        if (searchQuery) {
+            this.router.navigate([`results/${type.toLowerCase()}`], {queryParams: searchQuery});
+        }
     }
 
     openFilters() {

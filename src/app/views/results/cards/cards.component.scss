@@ -13,8 +13,8 @@ body {
 .blog-card {
     position: relative;
     display: inline-block;
-    width: 20vw;
-    height: 30vh;
+    width: 290px;
+    height: 300px;
     font-family: 'Droid Serif', serif;
     color: #fff;
     margin: 0 auto;
@@ -188,14 +188,14 @@ h3:after {
     padding: 0;
     width: 100%;
     position: absolute;
-    bottom: -40px;
+    bottom: 120px;
     left: 0;
     margin: 0 auto;
     padding: 0 50px;
     font-style: 16px;
     line-height: 24px;
     z-index: 20;
-    opacity: 0;
+    opacity: 1;
     transition: bottom 0.64s, opacity 0.63s cubic-bezier(0.33, 0.66, 0.66, 1);
 }
 
@@ -338,9 +338,9 @@ h3:after {
         width: 100%
     }
 
-    .card-info {
-        display: none
-    }
+    // .card-info {
+    //     display: none
+    // }
 
     .blog-card:hover .title-content,
     .title-content,
