@@ -12,7 +12,7 @@ var certificate = fs.readFileSync(__dirname + '/config/incyte.cert', 'utf8');
 const httpsServer = https.createServer({
   cert: certificate,
   key: privateKey
-}, app);
+}, app); 
 
 const serverHttps = httpsServer.listen(port);
 
