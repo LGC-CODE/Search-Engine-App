@@ -7,7 +7,7 @@ class Service {
   }
 
   async find(params) {
-    // console.log(params);
+    console.log(params);
 
     // console.log(params.query.query);
     const paramsArray = params.query.query.split(' ');
@@ -24,6 +24,8 @@ class Service {
 
     const sortbyQuery = ` order by ${params.query.sortby ? params.query.sortby : ''} asc`
 
+    const paginationQuery = (params.query.page && params.query.limit) ? ` limit ${parseInt(params.query.page, 10) === 1 ? 0 : parseInt(params.query.page,10) * 20 },20;` : ' limit 1000;';
+    
     // console.log(concatinatedSearchQuery);
 
     const masterQuery =
@@ -45,7 +47,7 @@ class Service {
 
       (params.query.lat ? distanceQuery : '') +
 
-      ` limit 1000;`
+      paginationQuery;
 
     console.log(masterQuery);
     return this.sequelClient.query(masterQuery, {

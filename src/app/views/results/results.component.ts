@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AppConfigService} from '../../services/app-config.service';
+import {ActivatedRoute} from '@angular/router';
+import {PaginationService} from '../../services/pagination.service';
 
 @Component({
     selector: 'app-results',
@@ -8,13 +10,23 @@ import {AppConfigService} from '../../services/app-config.service';
 })
 export class ResultsComponent implements OnInit {
     public menuItems;
+    public activeRoute;
+    public paginationEnabled;
 
-    constructor(private appConfigService: AppConfigService) {
+    constructor(private appConfigService: AppConfigService, private route: ActivatedRoute,
+                private paginationService: PaginationService) {
         this.appConfigService.toggleMenuItems.subscribe(
             menu => {
                 this.menuItems = menu;
             }
         );
+
+        this.paginationService.paginationEnabled.subscribe(
+            enabled => {
+                this.paginationEnabled = enabled;
+            }
+        );
+
     }
 
     ngOnInit() {

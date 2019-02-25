@@ -35,7 +35,7 @@ export class FiltersComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.currentRoute = this.router.url.split('?')[0];
+        this.currentRoute = this.route.snapshot.url.join('').split('?')[0];
     }
 
     closeFilterModal() {
@@ -95,7 +95,7 @@ export class FiltersComponent implements OnInit {
                 // this.location = position.coords;
                 const params = this.route.snapshot.queryParams;
                 // console.log(params, type);
-                const searchQuery = {...params, lat: position.coords.latitude, lng: position.coords.longitude, radius: 10017};
+                const searchQuery = {...params, page: 1, lat: position.coords.latitude, lng: position.coords.longitude, radius: 10017};
                 // console.log(searchQuery);
                 this.navigateToResults(searchQuery);
                 console.log(position.coords);

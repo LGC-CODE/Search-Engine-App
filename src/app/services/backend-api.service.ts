@@ -4,7 +4,7 @@ import {Observable} from 'rxjs';
 import * as _ from 'lodash';
 import {environment} from '../../environments/environment';
 import {switchMap, debounceTime, tap, finalize, startWith, map, throttleTime} from 'rxjs/operators';
-import {Router} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +15,7 @@ export class BackendApiService {
     private resultsPath = '/filters?';
     private geoSpacialPath = '/geolocation';
 
-    constructor(private http: HttpClient, private router: Router) {}
+    constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {}
 
     search(filter, page = 1) {
         // console.log(this.router.routerState.snapshot.url.split('?')[1]);
@@ -44,9 +44,8 @@ export class BackendApiService {
             );
     }
 
-    generateFilteredResults(query) {
-        const routerState = this.router.routerState.snapshot.url.split('?')[1];
-        return this.http.get<any>(environment.apiEndpoint + this.resultsPath + routerState)
+    generateFilteredResults(routerQuery) {
+        return this.http.get<any>(environment.apiEndpoint + this.resultsPath + routerQuery)
             .pipe(
                 map(resp => resp)
             );

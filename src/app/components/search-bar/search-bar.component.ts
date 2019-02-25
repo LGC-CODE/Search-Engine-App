@@ -53,7 +53,7 @@ export class SearchBarComponent implements OnInit {
 
     optionSelect() {
         this.searchService.isModalOpen.next(false);
-        this.routers.navigate(['results/list'], {queryParams: {query: this.searchQuery ? this.searchQuery : ''}});
+        this.routers.navigate(['results/list'], {queryParams: {query: this.searchQuery ? this.searchQuery : '', page: 1, limit: 20}});
         this.filtersService.filterModalSpecs.next({});
     }
 }

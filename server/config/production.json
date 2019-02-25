@@ -1,4 +1,11 @@
 {
-  "host": "backend-app.feathersjs.com",
-  "port": "PORT"
-}
+    "host": "localhost",
+    "port": 3030,
+    "public": "../public/",
+    "paginate": {
+      "default": 10,
+      "max": 50
+    },
+    "mysql": "mysql://ust00jj9dw3ecpno:e64gpbdhuz834eh4@gp96xszpzlqupw4k.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/tntvtlrgnfjxo46e",
+    "nedb": "../data"
+  }

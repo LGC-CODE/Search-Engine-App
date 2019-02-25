@@ -3,7 +3,8 @@ import {BackendApiService} from '../../../services/backend-api.service';
 import {CircleManager, AgmCircle, GoogleMapsAPIWrapper} from '@agm/core';
 import {debounceTime, tap, throttleTime, distinctUntilChanged, switchMap} from 'rxjs/operators';
 import {timer, Observable, fromEvent, BehaviorSubject} from 'rxjs';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {PaginationService} from '../../../services/pagination.service';
 
 @Component({
     selector: 'app-map',
@@ -202,7 +203,7 @@ export class MapComponent implements OnInit {
 
     constructor(private backendApi: BackendApiService,
         private mapsApiWrapper: GoogleMapsAPIWrapper, private circleManager: CircleManager,
-        private route: ActivatedRoute) {
+        private route: ActivatedRoute, private router: Router, private paginationService: PaginationService) {
 
         this.circleChange.pipe(
             debounceTime(1000),
@@ -219,6 +220,8 @@ export class MapComponent implements OnInit {
             }
         );
 
+        // disable pagination
+        this.paginationService.paginationEnabled.next(false);
     }
 
     ngOnInit() {
@@ -246,7 +249,8 @@ export class MapComponent implements OnInit {
             params => {
                 if (!this.generatePointsOnMove) {
                     console.log(params);
-                    this.backendApi.generateFilteredResults('').toPromise().then(
+                    const activeQuery = this.router.url.split('?')[1];
+                    this.backendApi.generateFilteredResults(activeQuery).toPromise().then(
                         resp => {
                             console.log(resp[0]);
                             this.markers = resp[0];

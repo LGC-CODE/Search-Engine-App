@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router, RouterModule} from '@angular/router';
 import {BackendApiService} from '../../../services/backend-api.service';
 import {debounceTime, tap, switchMap, finalize} from 'rxjs/operators';
+import {PaginationService} from '../../../services/pagination.service';
 
 @Component({
   selector: 'app-cards',
@@ -13,7 +14,11 @@ export class CardsComponent implements OnInit {
     searchResults: object;
     isLoading;
 
-    constructor(private route: ActivatedRoute, private backendApi: BackendApiService) {}
+    constructor(private route: ActivatedRoute, private backendApi: BackendApiService,
+                private router: Router, private paginationService: PaginationService) {
+                    // enable pagination
+                    this.paginationService.paginationEnabled.next(true);
+                }
 
     ngOnInit() {
         // const valsChange = this.route.queryParams
@@ -38,7 +43,8 @@ export class CardsComponent implements OnInit {
         this.route.queryParams.subscribe(
             params => {
                 console.log(params);
-                this.backendApi.generateFilteredResults('').toPromise().then(
+                const activeQuery = this.router.url.split('?')[1];
+                this.backendApi.generateFilteredResults(activeQuery).toPromise().then(
                     resp => {
                         console.log(resp);
                         this.searchResults = resp[0];

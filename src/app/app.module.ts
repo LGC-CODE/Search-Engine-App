@@ -39,6 +39,7 @@ import { AddressValidationComponent } from './components/address-validation/addr
 import { HcpConfirmationComponent } from './components/hcp-confirmation/hcp-confirmation.component';
 import { ViewComponent } from './views/hcp/view/view.component';
 import { HcpDesktopComponent } from './views/hcp-desktop/hcp-desktop.component';
+import { PaginationBarComponent } from './components/pagination-bar/pagination-bar.component';
 
 @NgModule({
     declarations: [
@@ -63,7 +64,8 @@ import { HcpDesktopComponent } from './views/hcp-desktop/hcp-desktop.component';
         AddressValidationComponent,
         HcpConfirmationComponent,
         ViewComponent,
-        HcpDesktopComponent
+        HcpDesktopComponent,
+        PaginationBarComponent
     ],
     imports: [
         BrowserModule,

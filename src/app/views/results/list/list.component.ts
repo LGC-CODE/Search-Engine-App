@@ -1,7 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BackendApiService} from '../../../services/backend-api.service';
 import {debounceTime, tap, switchMap, finalize} from 'rxjs/operators';
+import {FiltersService} from '../../../services/filters.service';
+import {PaginationService} from '../../../services/pagination.service';
 
 @Component({
     selector: 'app-list',
@@ -13,24 +15,14 @@ export class ListComponent implements OnInit {
     isLoading;
     openFilter;
 
-    constructor(private route: ActivatedRoute, private backendApi: BackendApiService) {}
+    constructor(private route: ActivatedRoute, private backendApi: BackendApiService,
+                private filterService: FiltersService, private paginationService: PaginationService,
+                private router: Router) {
+                    // enable pagination
+                    this.paginationService.paginationEnabled.next(true);
+                }
 
     ngOnInit() {
-        // const valsChange = this.route.queryParams
-        //     .pipe(
-        //         debounceTime(300),
-        //         tap(() => this.isLoading = true),
-        //         switchMap(value => {
-        //             console.log(value);
-        //             return this.backendApi.search(value, 1)
-        //                 .pipe(
-        //                     finalize(() => this.isLoading = false),
-        //                 );
-        //         }
-        //         )
-        //     )
-        //     .subscribe(users => this.searchResults = users[0]);
-
         this.applyFilters();
     }
 
@@ -38,9 +30,16 @@ export class ListComponent implements OnInit {
         this.route.queryParams.subscribe(
             params => {
                     console.log(params);
-                    this.backendApi.generateFilteredResults('').toPromise().then(
+                    console.log(this.router.url);
+                    const activeQuery = this.router.url.split('?')[1];
+                    this.backendApi.generateFilteredResults(activeQuery).toPromise().then(
                         resp => {
                             console.log(resp);
+                            if (resp[0].length < 20) {
+                                this.paginationService.paginationPossible.next(false);
+                            } else {
+                                this.paginationService.paginationPossible.next(true);
+                            }
                             this.searchResults = resp[0];
                         }
                     );

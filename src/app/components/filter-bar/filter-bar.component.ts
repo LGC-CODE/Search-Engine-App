@@ -10,6 +10,7 @@ export class FilterBarComponent implements OnInit {
     public sortByText = 'Sort By';
     public openFilter = false;
     public currentRoute: string;
+    public currentView: string;
 
     constructor(private route: ActivatedRoute, private router: Router) {
     }
@@ -31,12 +32,13 @@ export class FilterBarComponent implements OnInit {
     }
 
     getView(type) {
+        this.currentView = type;
         this.route.queryParams.subscribe(
             params => {
                 // console.log(params, type);
                 const searchQuery = {...params};
                 // console.log(searchQuery);
-                this.router.navigate([`/results/${type}`], {queryParams: searchQuery});
+                this.router.navigate([`/results/${type.toLowerCase()}`], {queryParams: searchQuery});
             }
         );
     }
