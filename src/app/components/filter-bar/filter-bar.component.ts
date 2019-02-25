@@ -51,7 +51,7 @@ export class FilterBarComponent implements OnInit {
                 // console.log(params, type);
                 const searchQuery = {...params, sortby: type};
                 // console.log(searchQuery);
-                this.router.navigate([this.currentRoute], {queryParams: searchQuery});
+                this.router.navigate([], {relativeTo: this.route, queryParams: searchQuery});
             }
         );
     }
