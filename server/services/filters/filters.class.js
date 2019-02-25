@@ -24,7 +24,7 @@ class Service {
 
     const sortbyQuery = ` order by ${params.query.sortby ? params.query.sortby : ''} asc`
 
-    const paginationQuery = (params.query.page && params.query.limit) ? ` limit ${parseInt(params.query.page, 10) === 1 ? 0 : parseInt(params.query.page,10) * 20 },20;` : ' limit 1000;';
+    const paginationQuery = (params.query.page && params.query.limit) ? ` limit ${parseInt(params.query.page, 10) === 1 ? 0 : parseInt(params.query.page,10) * 20 },20;` : ' limit 500;';
     
     // console.log(concatinatedSearchQuery);
 

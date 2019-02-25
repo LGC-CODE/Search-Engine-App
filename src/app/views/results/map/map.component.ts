@@ -252,10 +252,6 @@ export class MapComponent implements OnInit {
                 if (!this.generatePointsOnMove) {
                     console.log(params);
                     const activeQuery = this.router.url.split('?')[1];
-                    const currentRoute = this.router.url.split('?')[0];
-                    console.log('navigating from maps', currentRoute);
-
-                    this.filterService.navigateToResults(currentRoute, {...params, page: null, limit: null});
 
                     this.backendApi.generateFilteredResults(activeQuery).toPromise().then(
                         resp => {

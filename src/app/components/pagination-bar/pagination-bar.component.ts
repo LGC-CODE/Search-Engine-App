@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, OnDestroy} from '@angular/core';
 import {FiltersService} from '../../services/filters.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationService} from '../../services/pagination.service';
@@ -8,7 +8,7 @@ import {PaginationService} from '../../services/pagination.service';
     templateUrl: './pagination-bar.component.html',
     styleUrls: ['./pagination-bar.component.scss']
 })
-export class PaginationBarComponent implements OnInit {
+export class PaginationBarComponent implements OnInit, OnDestroy {
     public currentPage;
     public canNextPage;
 
@@ -34,6 +34,14 @@ export class PaginationBarComponent implements OnInit {
     ngOnInit() {
     }
 
+    ngOnDestroy() {
+        // const activeQuery = this.router.url.split('?')[0];
+        // console.log('navigating from pagination destroy', activeQuery);
+        // const params = this.route.snapshot.queryParams;
+        // const searchQuery = {...params, page: null, limit: null};
+        // this.filterService.navigateToResults(activeQuery, searchQuery);
+    }
+
     nextPage() {
         this.currentPage++;
         this.setPage();
@@ -50,7 +58,12 @@ export class PaginationBarComponent implements OnInit {
         const activeQuery = this.router.url.split('?')[0];
         console.log('navigating from pagination', activeQuery);
         const params = this.route.snapshot.queryParams;
-        const searchQuery = {...params, page: this.currentPage, limit: 20, lat: null, lng: null, radius: null};
+        let searchQuery;
+        if (activeQuery === 'results/map') {
+            searchQuery = {...params, page: null, limit: null};
+        } else {
+            searchQuery = {...params, page: this.currentPage, limit: 20, lat: null, lng: null, radius: null};
+        }
         this.filterService.navigateToResults(activeQuery, searchQuery);
     }
 
