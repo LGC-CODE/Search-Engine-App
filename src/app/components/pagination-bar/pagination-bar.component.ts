@@ -48,9 +48,9 @@ export class PaginationBarComponent implements OnInit {
 
     setPage() {
         const activeQuery = this.router.url.split('?')[0];
-        console.log(activeQuery);
+        console.log('navigating from pagination', activeQuery);
         const params = this.route.snapshot.queryParams;
-        const searchQuery = {...params, page: this.currentPage, limit: 20};
+        const searchQuery = {...params, page: this.currentPage, limit: 20, lat: null, lng: null, radius: null};
         this.filterService.navigateToResults(activeQuery, searchQuery);
     }
 

@@ -5,6 +5,7 @@ import {debounceTime, tap, throttleTime, distinctUntilChanged, switchMap} from '
 import {timer, Observable, fromEvent, BehaviorSubject} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PaginationService} from '../../../services/pagination.service';
+import {FiltersService} from '../../../services/filters.service';
 
 @Component({
     selector: 'app-map',
@@ -203,7 +204,8 @@ export class MapComponent implements OnInit {
 
     constructor(private backendApi: BackendApiService,
         private mapsApiWrapper: GoogleMapsAPIWrapper, private circleManager: CircleManager,
-        private route: ActivatedRoute, private router: Router, private paginationService: PaginationService) {
+        private route: ActivatedRoute, private router: Router, private paginationService: PaginationService,
+        private filterService: FiltersService) {
 
         this.circleChange.pipe(
             debounceTime(1000),
@@ -250,6 +252,11 @@ export class MapComponent implements OnInit {
                 if (!this.generatePointsOnMove) {
                     console.log(params);
                     const activeQuery = this.router.url.split('?')[1];
+                    const currentRoute = this.router.url.split('?')[0];
+                    console.log('navigating from maps', currentRoute);
+
+                    this.filterService.navigateToResults(currentRoute, {...params, page: null, limit: null});
+
                     this.backendApi.generateFilteredResults(activeQuery).toPromise().then(
                         resp => {
                             console.log(resp[0]);

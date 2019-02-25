@@ -44,6 +44,7 @@ export class FilterBarComponent implements OnInit {
 
     sortBy(type: string, label: string) {
         this.currentRoute = this.router.url.split('?')[0];
+        console.log('navigating from filter bar', this.currentRoute);
         this.sortByText = label;
         this.route.queryParams.subscribe(
             params => {

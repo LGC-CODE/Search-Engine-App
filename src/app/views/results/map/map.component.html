@@ -11,6 +11,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ m.first_name + ' ' + m.last_name }}</h5>
+                    <p class="card-text">{{ m.address1 }}</p>
                     <p class="card-text">{{ m.city }} {{ m.state }} {{ m.zip5 }}</p>
                     <p class="card-text" [routerLink]="[ '/full-hcp' ]">View More</p>
                 </div>

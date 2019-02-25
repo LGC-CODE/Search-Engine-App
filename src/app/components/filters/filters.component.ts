@@ -158,7 +158,7 @@ export class FiltersComponent implements OnInit {
 
     navigateToResults(searchQuery) {
         this.currentRoute = this.router.url.split('?')[0];
-        console.log('navigating');
+        console.log('navigating from filters', this.currentRoute);
         this.router.navigate([this.currentRoute], {queryParams: searchQuery});
     }
 }

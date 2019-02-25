@@ -47,7 +47,7 @@ class Service {
 
       (params.query.lat ? distanceQuery : '') +
 
-      paginationQuery;
+      (params.query.lat ? '' : paginationQuery);
 
     console.log(masterQuery);
     return this.sequelClient.query(masterQuery, {

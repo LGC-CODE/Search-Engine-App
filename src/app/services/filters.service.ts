@@ -14,7 +14,7 @@ export class FiltersService {
     }
 
     navigateToResults(path, searchQuery) {
-        console.log('navigating');
+        console.log('navigating from filters', path);
         this.router.navigate([path], {queryParams: searchQuery});
     }
 }
