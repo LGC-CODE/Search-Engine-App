@@ -18,7 +18,7 @@ class Service {
     this.coords.radius = params.query.radius * 0.00051;
 
     return this.sequelClient.query(
-        `SELECT city, last_addr_latitude, last_addr_longitude, 3956 * 2 * ASIN(SQRT(POWER(SIN((${this.coords.lat} - abs(last_addr_latitude)) * pi() / 180 / 2), 2) + COS(${this.coords.lat} * pi() / 180) * COS(abs(last_addr_latitude) * pi() / 180) * POWER(SIN((${this.coords.long} - last_addr_longitude) * pi() / 180 / 2), 2))) as distance
+        `SELECT first_name, last_name, address1, state, zip5, city, last_addr_latitude, last_addr_longitude, 3956 * 2 * ASIN(SQRT(POWER(SIN((${this.coords.lat} - abs(last_addr_latitude)) * pi() / 180 / 2), 2) + COS(${this.coords.lat} * pi() / 180) * COS(abs(last_addr_latitude) * pi() / 180) * POWER(SIN((${this.coords.long} - last_addr_longitude) * pi() / 180 / 2), 2))) as distance
         from zmdmp_profs
         inner join zmdmp_locs
         on zmdmp_profs.best_loc = zmdmp_locs.loc_id

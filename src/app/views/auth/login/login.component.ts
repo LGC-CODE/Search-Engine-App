@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 import {OktaAuthService} from '@okta/okta-angular';
 import * as OktaSignIn from '@okta/okta-signin-widget';
 import {Router} from '@angular/router';
@@ -9,6 +9,7 @@ import {Router} from '@angular/router';
     styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+    @ViewChild('signOn') signOn: ElementRef;
     public signIn;
     public isAuthenticated;
     public widget = new OktaSignIn({
