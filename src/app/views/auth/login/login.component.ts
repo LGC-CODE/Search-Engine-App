@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
     public isAuthenticated;
     public widget = new OktaSignIn({
         baseUrl: 'https://dev-298781.oktapreview.com',
-        logo: '/assets/welcome/incyte_logo.png',
+        // logo: '/assets/welcome/incyte_logo.png',
         helpLinks: {
             custom: [
                 {
